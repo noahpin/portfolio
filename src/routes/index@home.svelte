@@ -31,7 +31,7 @@
 </svelte:head>
 
 <h1 class="home-title">
-	A <span class="color-green">MULTI&shy;DISCaIPLI&shy;NARY</span><br />
+	A <span class="color-green">MULTI&shy;DISCIPLI&shy;NARY</span><br />
 	<span class="color-green">ARTIST</span>
 	OBSESSED<br /> WITH CREATING <span class="color-green">MAGIC</span>
 </h1>
