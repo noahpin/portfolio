@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Akira';
+    src: url('fonts/Akira.eot');
+    /* IE9*/
+    src: url('fonts/Akira.eot#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('fonts/Akira.woff2') format('woff2'),
+        url('fonts/Akira.woff') format('woff'),
+        url('fonts/Akira.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+    src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'),
+        url('fonts/JetBrainsMono-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+    font-style: italic;
+    src: url('fonts/JetBrainsMono-BoldItalic.ttf') format('woff2'),
+        url('fonts/JetBrainsMono-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: normal;
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+        url('fonts/JetBrainsMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: normal;
+    font-style: italic;
+    src: url('fonts/JetBrainsMono-Italic.woff2') format('woff2'),
+        url('fonts/JetBrainsMono-Italic.ttf') format('truetype');
+}

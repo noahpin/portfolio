@@ -1,0 +1,83 @@
+:root {
+	--white: white;
+	--black: black;
+	--gray: #121213;
+	--green: #17fdb9;
+}
+
+* {
+	color: var(--white);
+	font-family: 'JetBrains Mono';
+}
+
+h1,
+h1 *,
+h2,
+h2 *,
+h3,
+h3 *,
+h4,
+h4 *,
+h5,
+h5 * {
+	font-family: "Akira";
+}
+
+html,
+body {
+	background: var(--black);
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+	position: relative;
+}
+
+body {
+	background-size: 70px 70px;
+	background-image:
+		linear-gradient(to right, var(--gray) 2px, transparent 2px),
+		linear-gradient(to bottom, var(--gray) 2px, transparent 2px);
+	background-position: center;
+}
+
+.color-green {
+	color: var(--green);
+}
+
+.home-title {
+	font-size: 65px;
+	text-align: center;
+	width: calc(100vw - 100px);
+	height: fit-content;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 50px 0;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px) {
+	.home-title {
+		font-size: min(5vw, 65px);
+	}
+}
+
+@media screen and (max-width: 900px) and (min-width: 700px) {
+	.home-title {
+		font-size: 70px;
+		text-align: left;
+		hyphens: manual;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.home-title {
+		font-size: min(10vw, 65px);
+		text-align: left;
+		hyphens: manual;
+	}
+}
