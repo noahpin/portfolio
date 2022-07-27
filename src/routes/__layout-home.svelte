@@ -10,6 +10,13 @@
 </script>
 
 <Navbar />
-<main class="container max-w-3xl mx-auto px-4 mb-20">
+<main class="">
 	<slot />
 </main>
+
+<style>
+	main {
+		width: 100%;
+		min-height: 100vh;
+	}
+</style>

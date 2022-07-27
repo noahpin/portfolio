@@ -2,6 +2,7 @@
 	import { client } from '$lib/graphql-client';
 	import { projectQuery } from '$lib/graphql-queries';
 	import { marked } from 'marked';
+	import StarIcon from '../../lib/components/star-icon.svelte';
 
 	export const load = async ({ params }) => {
 		const { slug } = params;
@@ -21,30 +22,36 @@
 </script>
 
 <svelte:head>
-	<title>WORK | {project.name}</title>
+	<title>WORK | {project.name.toUpperCase()}</title>
 </svelte:head>
 
-<div class="sm:-mx-5 md:-mx-10 lg:-mx-20 xl:-mx-38 mb-5">
-	<img class="rounded-lg" src={project.image[0].url} alt={project.title} />
+<img class="coverImage" src={project.image[0].url} alt={project.title} />
+
+<h1>{project.name}</h1>
+
+<div class="projectTags">
+	{#if project.tags}
+		{#each project.tags as tag, i}
+			<a href="/work#{tag.replace(' ', ' ').toLowerCase()}">{tag}</a>
+			{#if project.tags.length - 1 > i}
+				<span style="width: 20px" />
+				<StarIcon fill="var(--white)" size="7" />
+				<span style="width: 20px" />
+			{/if}
+		{/each}
+	{/if}
 </div>
 
-<h1 class="text-4xl font-semibold mb-5">{project.name}</h1>
-
-<div class="mb-5 flex justify-between">
-	<div>
-		{#if project.tags}
-			{#each project.tags as tag}
-				<span class="badge badge-primary mr-2 hover:bg-primary-focus cursor-pointer">{tag}</span>
-			{/each}
-		{/if}
-	</div>
+<div class="viewProjectButton">
+	<a href={project.viewProject}>View Project</a>
 </div>
 
-<div class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus">
-	<a class="mr-5" href={project.demo}>Demo</a>
-	<a href={project.sourceCode}>Source Code</a>
-</div>
-
-<article class="prose prose-xl">
+<article class="postContent">
 	{@html marked(project.description)}
 </article>
+
+<style>
+	h1 {
+		margin-top: 50px;
+	}
+</style>

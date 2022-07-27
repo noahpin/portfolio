@@ -2,6 +2,7 @@
 	import { client } from '$lib/graphql-client';
 	import { postQuery } from '$lib/graphql-queries';
 	import { marked } from 'marked';
+	import StarIcon from '../../lib/components/star-icon.svelte';
 
 	export const load = async ({ params }) => {
 		const { slug } = params;
@@ -23,32 +24,36 @@
 </script>
 
 <svelte:head>
-	<title>BLOG | {title}</title>
+	<title>BLOG | {title.toUpperCase()}</title>
 </svelte:head>
-<div class="sm:-mx-5 md:-mx-10 lg:-mx-20 xl:-mx-38 mb-5">
-	<img class="rounded-xl" src={coverImage.url} alt={`Cover image for ${title}`} />
-</div>
+<img class="coverImage" src={coverImage.url} alt={title} />
 
-<div class="prose prose-xl">
-	<h1>{title}</h1>
-</div>
+<h1>{title}</h1>
 
-<p class="text-secondary text-xs tracking-widest font-semibold">
+<p class="postMetadata">
 	{new Date(date).toDateString()}
 </p>
 
-<div class="mb-5 flex justify-between">
-	<div>
-		{#if tags}
-			<div class="mt-5 space-x-2">
-				{#each tags as tag}
-					<span class="badge badge-primary">{tag}</span>
-				{/each}
-			</div>
-		{/if}
-	</div>
+<div class="projectTags">
+	{#if tags}
+		{#each tags as tag, i}
+			<a href="/blog#{tag.replace(' ', ' ').toLowerCase()}">{tag}</a>
+			{#if tags.length - 1 > i}
+				<span style="width: 20px" />
+				<StarIcon fill="var(--white)" size="7" />
+				<span style="width: 20px" />
+			{/if}
+		{/each}
+	{/if}
 </div>
 
-<article div class="prose prose-lg">
+<article class="postContent">
 	{@html marked(content)}
 </article>
+
+<style>
+	h1 {
+		margin-top: 50px;
+		margin-bottom: 5px;
+	}
+</style>

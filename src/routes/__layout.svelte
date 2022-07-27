@@ -4,12 +4,13 @@
 	import { onMount } from 'svelte';
 	import '$lib/styles/app.css';
 	import '$lib/styles/font.css';
-	onMount(async () => {
-		console.log('a');
-	});
+	let y;
 </script>
 
-<Navbar />
+<Navbar scroll={y} />
+
+<svelte:window bind:scrollY={y} />
 <main class="container max-w-3xl mx-auto px-4 mb-20">
 	<slot />
 </main>
+<Footer />
