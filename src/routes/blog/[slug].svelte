@@ -1,8 +1,11 @@
 <script context="module">
+	import SvelteMarkdown from 'svelte-markdown';
+
 	import { client } from '$lib/graphql-client';
 	import { postQuery } from '$lib/graphql-queries';
 	import { marked } from 'marked';
 	import StarIcon from '../../lib/components/star-icon.svelte';
+	import CodeBlock from '../../lib/components/code-block.svelte';
 
 	export const load = async ({ params }) => {
 		const { slug } = params;
@@ -48,7 +51,7 @@
 </div>
 
 <article class="postContent">
-	{@html marked(content)}
+	<SvelteMarkdown source={content} renderers={{ code: CodeBlock }} />
 </article>
 
 <style>

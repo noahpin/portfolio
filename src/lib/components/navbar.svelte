@@ -1,16 +1,22 @@
 <script>
-	import Logotype from './logotype.svelte';
+	import LogotypeNav from './logotype-nav.svelte';
 	import Logoicon from './logoicon.svelte';
 	import { page } from '$app/stores';
+	import Icon from 'svelte-icons-pack/Icon.svelte';
+	import RiSystemMenu3Fill from 'svelte-icons-pack/ri/RiSystemMenu3Fill';
+	import RiSystemCloseFill from 'svelte-icons-pack/ri/RiSystemCloseFill';
+	import VscClose from 'svelte-icons-pack/vsc/VscClose';
 	import { onMount } from 'svelte/internal';
+
+	import { Hamburger } from 'svelte-hamburgers';
+
+	let open;
 	export let pathName = $page.url.pathname.replace('/', '');
 	console.log(pathName);
 	var pa = '';
-
-	onMount(() => {
-		return () => {
-			pathName = $page.url.pathname.replace('/', '');
-		};
+	page.subscribe(() => {
+		pathName = $page.url.pathname.replace('/', '');
+		console.log(pathName);
 	});
 	export let scroll = 0;
 	$: scrollChange(scroll);
@@ -38,18 +44,59 @@
 </script>
 
 <div class={navVisible ? 'nav nav-hidden' : 'nav'}>
-	<Logotype size="50" visible={navVisible} />
+	<LogotypeNav size="50" visible={navVisible} />
 	<Logoicon size="50" />
-	<div class="nav-btns">
+	<div class={open ? 'nav-btns' : 'nav-btns btns-hidden'}>
+		<button
+			class={open ? 'hamburger-close ' : 'hamburger-close hamburger-hidden'}
+			on:click={() => {
+				open = !open;
+			}}
+		>
+			<Icon size="48" color="var(--black)" className="icon-button" src={VscClose} />
+		</button>
 		<a href="/" class={pathName == '' ? 'selected' : ''}> Home </a>
 		<a href="/work" class={pathName.startsWith('work') ? 'selected' : ''}>Work</a>
 		<a href="/about" class={pathName.startsWith('about') ? 'selected' : ''}>About</a>
 		<a href="/blog" class={pathName.startsWith('blog') ? 'selected' : ''}>Blog</a>
 		<a href="/contact" class={pathName.startsWith('contact') ? 'selected' : ''}>Contact</a>
 	</div>
+	<button
+		class={open ? 'hamburger-open hamburger-hidden' : 'hamburger-open'}
+		on:click={() => {
+			open = !open;
+		}}
+	>
+		<Icon size="32" color="var(--green)" className="icon-button" src={RiSystemMenu3Fill} />
+	</button>
 </div>
 
 <style>
+	.hamburger-open {
+		margin: 0 50px;
+		margin-right: 40px;
+		position: absolute;
+		right: 0;
+		opacity: 0;
+		pointer-events: none;
+		background: none;
+		border: none;
+		outline: none;
+	}
+	.hamburger-hidden {
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+	.hamburger-close {
+		right: 40px;
+		top: 15px;
+		padding: 0;
+		position: absolute;
+		pointer-events: none;
+		background: none;
+		border: none;
+		outline: none;
+	}
 	.selected {
 		color: var(--green);
 	}
@@ -63,6 +110,7 @@
 		top: 20px;
 		width: calc(100% - 80px);
 		transition: 0.3s opacity;
+		z-index: 999999999999999999999;
 	}
 	.nav-hidden .nav-btns {
 		opacity: 0;
@@ -89,5 +137,71 @@
 	}
 	a:hover {
 		background-size: 100% 2px;
+	}
+
+	@media screen and (max-width: 900px) {
+		.hamburger-open {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.hamburger-close {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.nav-hidden .nav-btns {
+			opacity: unset;
+		}
+		.nav {
+			opacity: 1;
+			display: flex;
+			align-items: center;
+			position: fixed;
+			left: 0;
+			transform: none;
+			width: calc(100vw - 40px);
+			margin-left: 40px;
+			transition: 0.3s opacity;
+			z-index: 999999999999999999999;
+		}
+		.nav-btns {
+			position: fixed;
+			height: 100vh;
+			left: 0;
+			top: 0;
+			margin: 0;
+			width: 100vw;
+			transition: 0.3s opacity;
+			background: var(--green);
+			display: flex;
+			align-content: center;
+			flex-wrap: wrap;
+			gap: 50px 6000px;
+			opacity: 1;
+			pointer-events: all;
+		}
+
+		.nav-btns.btns-hidden {
+			opacity: 0;
+			pointer-events: none;
+		}
+		.selected {
+			color: var(--black);
+			background-size: 100% 5px;
+		}
+		a {
+			width: fit-content;
+			margin: auto;
+			font-family: 'Akira';
+			font-size: 50px;
+			color: var(--black);
+			display: block;
+			background-position: 0px 50px;
+			background-size: 0% 5px;
+			background-attachment: local;
+			background-image: linear-gradient(to right, var(--black) 0%, var(--black) 100%);
+		}
+		a:hover {
+			background-size: 100% 5px;
+		}
 	}
 </style>

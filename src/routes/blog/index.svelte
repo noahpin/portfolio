@@ -38,7 +38,7 @@
 		/>
 	{/each}
 </CardGrid>
-
+<!--
 {#each posts as { title, slug, content, coverImage, tags }}
 	<div class="card text-center shadow-2xl mb-20">
 		<figure class="">
@@ -58,3 +58,4 @@
 		</div>
 	</div>
 {/each}
+-->

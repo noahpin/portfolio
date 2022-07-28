@@ -2,14 +2,12 @@
 	export let fill = 'var(--green)';
 	export let size = 100;
 	export let visible = true;
-	export let style = '';
 </script>
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	class={visible ? 'hidden' : ''}
 	height={size}
-	{style}
 	viewBox="0 0 381.05955 104.19497"
 >
 	<g>
@@ -31,3 +29,14 @@
 		/>
 	</g>
 </svg>
+
+<style>
+	svg {
+		opacity: 1;
+		transition: 0.3s opacity;
+		position: absolute;
+	}
+	.hidden {
+		opacity: 0;
+	}
+</style>

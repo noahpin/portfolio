@@ -2,8 +2,12 @@
 	--white: white;
 	--black: black;
 	--gray: #121213;
+	--middleGray: #3f3f44;
+	--lighterMiddleGray: #696970;
 	--lightGray: #9b9ba3;
 	--green: #17fdb9;
+	--greenTransparent: #17fdb927;
+	--greenSheer: #17fdb80c;
 }
 
 * {
@@ -129,3 +133,8 @@ pre {
 	text-align: center;
 	width: 100%;
 }
+
+.icon-button {
+	cursor: pointer;
+}
+
