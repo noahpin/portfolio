@@ -86,7 +86,7 @@ body {
 
 @media screen and (max-width: 900px) and (min-width: 700px) {
 	.home-title {
-		font-size: 70px;
+		font-size: 65px;
 		text-align: left;
 		hyphens: manual;
 	}
@@ -137,4 +137,3 @@ pre {
 .icon-button {
 	cursor: pointer;
 }
-

@@ -17,6 +17,7 @@
 	page.subscribe(() => {
 		pathName = $page.url.pathname.replace('/', '');
 		console.log(pathName);
+		open = false;
 	});
 	export let scroll = 0;
 	$: scrollChange(scroll);
