@@ -6,9 +6,6 @@
 	import '$lib/styles/font.css';
 	let y;
 
-	onMount(() => {
-		console.log('pathName');
-	});
 </script>
 
 <Navbar scroll={y} />

@@ -19,6 +19,7 @@
 
 <script>
 	export let project;
+		console.log(project)
 </script>
 
 <svelte:head>
@@ -30,10 +31,10 @@
 <h1>{project.name}</h1>
 
 <div class="projectTags">
-	{#if project.tags}
-		{#each project.tags as tag, i}
+	{#if project.projectTags}
+		{#each project.projectTags.tags as tag, i}
 			<a href="/work#{tag.replace(' ', ' ').toLowerCase()}">{tag}</a>
-			{#if project.tags.length - 1 > i}
+			{#if project.projectTags.tags.length - 1 > i}
 				<span style="width: 20px" />
 				<StarIcon fill="var(--white)" size="7" />
 				<span style="width: 20px" />
@@ -48,6 +49,15 @@
 
 <article class="postContent">
 	{@html marked(project.description)}
+
+{#if project.image}
+<h1>gallery</h1>
+<div class="gallery">
+		{#each project.image as image, i}
+		<img src={image.url} alt="">
+		{/each}
+		</div>
+{/if}
 </article>
 
 <style>

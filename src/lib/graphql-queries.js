@@ -17,9 +17,11 @@ const PROJECT_FRAGMENT = gql`
 		name
 		slug
 		description
-		tags
 		viewProject
 		shortDescription
+		projectTags {
+			tags
+		}
 		image {
 			url
 		}
@@ -32,7 +34,7 @@ const POST_FRAGMENT = gql`
 		date
 		content
 		shortDescription
-		tags
+		postTags
 		coverImage {
 			url
 		}

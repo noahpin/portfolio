@@ -4,9 +4,6 @@
 	import { onMount } from 'svelte';
 	import '$lib/styles/app.css';
 	import '$lib/styles/font.css';
-	onMount(async () => {
-		console.log('a');
-	});
 </script>
 
 <Navbar />

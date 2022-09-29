@@ -23,7 +23,7 @@
 <script>
 	export let post;
 
-	const { title, date, tags, content, coverImage } = post;
+	const { title, date, postTags, content, coverImage } = post;
 </script>
 
 <svelte:head>
@@ -38,10 +38,10 @@
 </p>
 
 <div class="projectTags">
-	{#if tags}
-		{#each tags as tag, i}
+	{#if postTags}
+		{#each postTags as tag, i}
 			<a href="/blog#{tag.replace(' ', ' ').toLowerCase()}">{tag}</a>
-			{#if tags.length - 1 > i}
+			{#if postTags.length - 1 > i}
 				<span style="width: 20px" />
 				<StarIcon fill="var(--white)" size="7" />
 				<span style="width: 20px" />

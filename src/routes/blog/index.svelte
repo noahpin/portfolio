@@ -18,6 +18,7 @@
 
 <script>
 	export let posts;
+	console.log(posts)
 </script>
 
 <svelte:head>
@@ -26,12 +27,12 @@
 <h1>Blog posts</h1>
 
 <CardGrid>
-	{#each posts as { title, slug, shortDescription, coverImage, tags }}
+	{#each posts as { title, slug, shortDescription, coverImage, postTags }}
 		<ProjectCard
 			href={`/blog/${slug}`}
 			name={title}
 			{shortDescription}
-			{tags}
+			tags={postTags}
 			url={coverImage.url}
 			{slug}
 			readButton={true}

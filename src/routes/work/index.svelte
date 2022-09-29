@@ -17,6 +17,7 @@
 
 <script>
 	export let projects;
+	console.log(projects)
 </script>
 
 <svelte:head>
@@ -26,7 +27,7 @@
 <h1>my work</h1>
 
 <CardGrid>
-	{#each projects as { name, slug, shortDescription, image }}
-		<ProjectCard href={`/work/${slug}`} {name} {shortDescription} url={image[0].url} {slug} />
+	{#each projects as { name, slug, shortDescription, image, projectTags }}
+		<ProjectCard href={`/work/${slug}`} {name} {shortDescription} url={image[0].url} {slug} tags={projectTags.tags} />
 	{/each}
 </CardGrid>
