@@ -9,7 +9,7 @@
 	import Logotype from './logotype.svelte';
 </script>
 
-<footer class="p-10 footer bg-primary text-primary-content footer-center">
+<footer class=" footer-center">
 	<div class="footer-content">
 		<div class="footer-top">
 			<!--
@@ -79,11 +79,12 @@
 <style>
 	footer {
 		width: 100vw;
-		background: var(--black);
+		background-image: linear-gradient(to bottom, transparent 0%, var(--black) 50%);
 		margin: 0;
 		height: fit-content;
-		padding: 45px 0;
-		margin-top: 100px;
+		padding: 60px 0;
+		padding-top: 80px;
+		margin-top: 80px;
 	}
 	p {
 		color: var(--middleGray);
