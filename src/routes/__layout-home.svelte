@@ -4,16 +4,9 @@
 	import { onMount } from 'svelte';
 	import '$lib/styles/app.css';
 	import '$lib/styles/font.css';
+	let y;
 </script>
 
-<Navbar />
-<main class="">
-	<slot />
-</main>
-
-<style>
-	main {
-		width: 100%;
-		min-height: 100vh;
-	}
-</style>
+<Navbar width={y} />
+<svelte:window bind:innerWidth={y} />
+<slot />

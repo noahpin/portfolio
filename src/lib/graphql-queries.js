@@ -19,6 +19,7 @@ const PROJECT_FRAGMENT = gql`
 		description
 		viewProject
 		shortDescription
+		timestamp
 		projectTags {
 			tags
 		}
@@ -46,7 +47,7 @@ const POST_FRAGMENT = gql`
 export const projectsQuery = gql`
 	${PROJECT_FRAGMENT}
 	query GetProjects {
-		projects {
+		projects(orderBy: timestamp_DESC) {
 			...ProjectDetails
 		}
 	}

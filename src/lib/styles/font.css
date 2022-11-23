@@ -38,3 +38,15 @@
     src: url('fonts/JetBrainsMono-Italic.woff2') format('woff2'),
         url('fonts/JetBrainsMono-Italic.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Disket Mono';
+    font-weight: normal;
+    src: url('fonts/Disket-Mono-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Disket Mono';
+    font-weight: bold;
+    src: url('fonts/Disket-Mono-Bold.woff') format('woff');
+}

@@ -19,14 +19,12 @@
 
 <script>
 	export let project;
-		console.log(project)
+	console.log(project);
 </script>
 
 <svelte:head>
 	<title>WORK | {project.name.toUpperCase()}</title>
 </svelte:head>
-
-<img class="coverImage" src={project.image[0].url} alt={project.title} />
 
 <h1>{project.name}</h1>
 
@@ -50,18 +48,18 @@
 <article class="postContent">
 	{@html marked(project.description)}
 
-{#if project.image}
-<h1>gallery</h1>
-<div class="gallery">
-		{#each project.image as image, i}
-		<img src={image.url} alt="">
-		{/each}
+	{#if project.image}
+		<h1>gallery</h1>
+		<div class="gallery">
+			{#each project.image as image, i}
+				<img src={image.url} alt="" />
+			{/each}
 		</div>
-{/if}
+	{/if}
 </article>
 
 <style>
 	h1 {
-		margin-top: 50px;
+		margin-top: 150px;
 	}
 </style>

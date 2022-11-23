@@ -5,13 +5,10 @@
 	import '$lib/styles/app.css';
 	import '$lib/styles/font.css';
 	let y;
-
 </script>
 
-<Navbar scroll={y} />
+<Navbar width={y} />
 
-<svelte:window bind:scrollY={y} />
-<main class="container max-w-3xl mx-auto px-4 mb-20">
-	<slot />
-</main>
+<svelte:window bind:innerWidth={y} />
+<slot />
 <Footer />
