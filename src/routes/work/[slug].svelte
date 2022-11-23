@@ -31,7 +31,7 @@
 <div class="projectTags">
 	{#if project.projectTags}
 		{#each project.projectTags.tags as tag, i}
-			<a href="/work#{tag.replace(' ', ' ').toLowerCase()}">{tag}</a>
+			<a>{tag}</a>
 			{#if project.projectTags.tags.length - 1 > i}
 				<span style="width: 20px" />
 				<StarIcon fill="var(--white)" size="7" />
