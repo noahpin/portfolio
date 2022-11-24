@@ -5,9 +5,16 @@ export const authorsQuery = gql`
 			name
 			intro
 			bio
-			slug
-			picture {
-				url
+			expertise
+			experiences {
+				description
+				link
+				title
+			}
+			contacts {
+				title
+				link
+				description
 			}
 		}
 	}
