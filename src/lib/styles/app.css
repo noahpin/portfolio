@@ -1,11 +1,11 @@
 :root {
-	--white: white;
-	--black: black;
+	--white: rgb(218, 215, 212);
+	--black: rgb(22, 20, 18);
 	--gray: #121213;
 	--middleGray: #3f3f44;
 	--lighterMiddleGray: #696970;
 	--lightGray: #9b9ba3;
-	--green: #ffffff;
+	--green: var(--white);
 	--greenTransparent: #17fdb927;
 	--greenSheer: #17fdb80c;
 }
@@ -33,6 +33,12 @@ h1 {
 	text-align: center;
 	font-size: 50px;
 	margin-top: 150px;
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 35px;
+	}
 }
 
 h2 {
@@ -94,21 +100,13 @@ body {
 
 .projectTags {
 	width: fit-content;
-	margin: auto;
+	margin-top: 0;
 	display: flex;
 	align-items: center;
 }
 
 .postContent {
-	width: calc(100vw - 180px);
-	margin: auto;
-}
-
-@media (max-width: 1000px) {
-	.postContent {
-		width: calc(100vw - 80px);
-		margin: auto;
-	}
+	width: 100%;
 }
 
 .postMetadata {
@@ -152,9 +150,18 @@ article a {
 	color: var(--green);
 }
 
+.bold {
+	font-weight: bold;
+}
+
+article {
+	font-size: 13px;
+	width: 100%;
+}
+
 article img {
 	display: block;
-	margin: 20px auto;
+	margin-bottom: 20px;
 }
 
 .gallery img {
@@ -171,4 +178,18 @@ input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+main {
+	position: relative;
+	margin: 80px;
+	min-height: calc(100vh - 160px);
+	box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+	main {
+		margin: 5vw;
+		min-height: calc(100vh - 10vw);
+	}
 }

@@ -23,33 +23,48 @@
 </script>
 
 <svelte:head>
-	<title>WORK | {project.name.toUpperCase()}</title>
+	<title>{project.name.toUpperCase()}</title>
 </svelte:head>
 
-<h1>{project.name}</h1>
-
-<div class="projectTags">
-	{#if project.projectTags}
-		{#each project.projectTags.tags as tag, i}
-			<a>{tag}</a>
-			{#if project.projectTags.tags.length - 1 > i}
-				<span style="width: 20px" />
-				<StarIcon fill="var(--white)" size="7" />
-				<span style="width: 20px" />
-			{/if}
-		{/each}
-	{/if}
-</div>
-
-<div class="viewProjectButton">
-	<a href={project.viewProject}>View Project</a>
-</div>
-
 <article class="postContent">
-	{@html marked(project.description)}
+	<h1>{project.name}</h1>
+	<div id="horizontal">
+		<div class="section">
+			{@html marked(project.description)}
+		</div>
+		<div class="section">
+			{#if project.timestamp}
+				<div class="particle">
+					<span class="bold">WHEN</span>
+					<p>
+						{project.timestamp}
+					</p>
+				</div>
+			{/if}
+			{#if project.projectTags}
+				<div class="particle">
+					<span class="bold">DISCIPLINES</span>
+					{#each project.projectTags.tags as tag, i}
+						<p>
+							{tag}
+						</p>
+					{/each}
+				</div>
+			{/if}
+			{#if project.projectLinks.length > 0}
+				<div class="particle">
+					<span class="bold">LINKS</span>
+					{#each project.projectLinks as { link, title }}
+						<p>
+							<a target="_blank" href={link}>{title}</a>
+						</p>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	</div>
 
 	{#if project.image}
-		<h1>gallery</h1>
 		<div class="gallery">
 			{#each project.image as image, i}
 				<img src={image.url} alt="" />
@@ -59,7 +74,47 @@
 </article>
 
 <style>
+	.particle {
+		margin-bottom: 30px;
+	}
 	h1 {
-		margin-top: 150px;
+		margin-top: 20px;
+		text-align: left;
+		max-width: 500px;
+		margin-bottom: 30px;
+	}
+	.projectTimestamp {
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	.projectTags {
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
+	.gallery {
+		margin-top: 50px;
+	}
+	.section {
+		max-width: 700px;
+		width: fit-content;
+		margin-right: 60px;
+	}
+	#horizontal {
+		display: flex;
+		justify-content: left;
+		align-items: baseline;
+		gap: 40px;
+	}
+	a:hover {
+		opacity: 0.5;
+	}
+	@media (max-width: 900px) {
+		#horizontal {
+			flex-direction: column;
+		}
+		.section {
+			max-width: none;
+			width: 100%;
+		}
 	}
 </style>

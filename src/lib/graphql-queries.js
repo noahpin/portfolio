@@ -17,14 +17,18 @@ const PROJECT_FRAGMENT = gql`
 		name
 		slug
 		description
-		viewProject
-		shortDescription
 		timestamp
 		projectTags {
 			tags
 		}
 		image {
 			url
+		}
+		projectLinks {
+			... on Link {
+				link
+				title
+			}
 		}
 	}
 `;

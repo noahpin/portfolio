@@ -78,7 +78,7 @@
 
 <style>
 	footer {
-		width: 100vw;
+		width: 100%;
 		background-image: linear-gradient(to bottom, transparent 0%, var(--black) 50%);
 		margin: 0;
 		height: fit-content;

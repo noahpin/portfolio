@@ -79,10 +79,7 @@
 		display: flex;
 		align-items: center;
 		position: relative;
-		left: 50%;
-		transform: translateX(-50%);
-		top: 90px;
-		width: calc(100% - 180px);
+		width: 100%;
 		transition: 0.3s opacity;
 		z-index: 999999999999999999999;
 		display: flex;
@@ -114,13 +111,7 @@
 		opacity: 0.75;
 	}
 
-	@media (max-width: 1000px) {
-		.nav {
-			top: 40px;
-			width: calc(100% - 80px);
-		}
-	}
-	@media (max-width: 580px) {
+	@media (max-width: 900px) {
 		a {
 			margin-left: 20px;
 		}

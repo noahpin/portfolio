@@ -55,7 +55,7 @@
 	<title>NOAH</title>
 </svelte:head>
 <div id="projectList">
-	{#each projects as { name, slug, shortDescription, image, projectTags, timestamp }, i}
+	{#each projects as { name, slug, image, projectTags, timestamp }, i}
 		<a
 			class={imageVisibility[i] ? 'project highlight' : 'project'}
 			href={'work/' + slug}
@@ -76,7 +76,7 @@
 	#backgrounds {
 		width: 100vw;
 		height: 100vh;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 0;
@@ -120,21 +120,12 @@
 		opacity: 0.5;
 	}
 	#projectList {
-		position: fixed;
-		bottom: 90px;
-		left: 90px;
-		width: 500px;
+		position: absolute;
+		max-width: 500px;
+		width: 100%;
 		gap: 0;
-	}
-	@media (max-width: 1000px) {
-		#projectList {
-			bottom: 40px;
-			left: 40px;
-		}
-	}
-	@media (max-width: 580px) {
-		#projectList {
-			width: calc(100vw - 80px);
-		}
+		z-index: 10;
+		float: right;
+		bottom: 0;
 	}
 </style>
