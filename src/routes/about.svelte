@@ -17,6 +17,10 @@
 <script>
 	export let authors;
 	var author = authors[0];
+	import { onMount } from 'svelte';
+	onMount(() => {
+		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; --accent: #dad7d4; `;
+	});
 </script>
 
 <svelte:head>

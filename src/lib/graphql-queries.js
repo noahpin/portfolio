@@ -37,6 +37,15 @@ const PROJECT_FRAGMENT = gql`
 				title
 			}
 		}
+		background {
+			hex
+		}
+		accent {
+			hex
+		}
+		text {
+			hex
+		}
 	}
 `;
 const POST_FRAGMENT = gql`

@@ -19,7 +19,11 @@
 
 <script>
 	export let project;
+	import { onMount } from 'svelte';
 	console.log(project);
+	onMount(() => {
+		document.documentElement.style.cssText = `--background: ${project.background.hex}; --text: ${project.text.hex}; --accent: ${project.accent.hex}; `;
+	});
 </script>
 
 <svelte:head>
@@ -74,6 +78,9 @@
 </article>
 
 <style>
+	:global(body) {
+		--white: var(--text);
+	}
 	.particle {
 		margin-bottom: 30px;
 	}

@@ -1,6 +1,6 @@
 :root {
-	--white: rgb(218, 215, 212);
-	--black: rgb(22, 20, 18);
+	--white: #dad7d4;
+	--black: #161412;
 	--gray: #121213;
 	--middleGray: #3f3f44;
 	--lighterMiddleGray: #696970;
@@ -49,15 +49,11 @@ h2 {
 
 html,
 body {
-	background: var(--black);
+	background: var(--background);
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	overflow-x: hidden;
-}
-
-.color-green {
-	color: var(--green);
 }
 
 .home-title {
@@ -109,15 +105,6 @@ body {
 	width: 100%;
 }
 
-.postMetadata {
-	color: var(--lightGray);
-	font-size: 20px;
-	width: 100%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 25px;
-}
-
 pre {
 	overflow-x: scroll;
 }
@@ -129,6 +116,7 @@ pre {
 
 .icon-button {
 	cursor: pointer;
+	opacity: .5;
 }
 
 .viewProjectButton {
@@ -136,7 +124,7 @@ pre {
 	margin: auto;
 	display: flex;
 	align-items: center;
-	background: var(--green);
+	background: var(--white);
 	padding: 6px 10px;
 	margin-top: 15px;
 }
@@ -147,7 +135,7 @@ pre {
 }
 
 article a {
-	color: var(--green);
+	color: var(--white);
 }
 
 .bold {

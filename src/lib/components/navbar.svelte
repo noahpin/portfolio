@@ -21,7 +21,7 @@
 	});
 	export let width = 0;
 	$: widthChange(width);
-	let fill = 'var(--green)';
+	let fill = 'var(--white)';
 	let bigEnough = false;
 	function widthChange(w) {
 		if (w > 900) {
@@ -92,7 +92,7 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		transition: 0.3s background-size;
-		background-image: linear-gradient(to right, var(--green) 0%, var(--green) 100%);
+		background-image: linear-gradient(to right, var(--white) 0%, var(--white) 100%);
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-position: 0px 19px;

@@ -19,7 +19,7 @@
 <style>
 	.wrapper {
 		overflow: hidden;
-		background: var(--green);
+		background: var(--white);
 		padding: 5px;
 		padding-bottom: 10px;
 		position: absolute;
@@ -28,7 +28,7 @@
 	}
 	.content {
 		width: 100000px;
-		background: var(--green);
+		background: var(--white);
 	}
 	.text {
 		animation-name: animation;

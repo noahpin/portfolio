@@ -43,6 +43,9 @@
 			inc();
 		}, 5000);
 	}
+	onMount(() => {
+		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; --accent: #dad7d4; `;
+	});
 </script>
 
 <div id="backgrounds">

@@ -22,52 +22,22 @@
 				<a class="link link-hover" href="/about">About</a>
 			</div>-->
 			<a href="https://www.instagram.com/noahp.xyz/" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoInstagramFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoInstagramFill} />
 			</a>
 			<a href="#" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoTwitterFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoTwitterFill} />
 			</a>
 			<a href="https://www.dribbble.com/noahpinales" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoDribbbleFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoDribbbleFill} />
 			</a>
 			<a href="#" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoBehanceFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoBehanceFill} />
 			</a>
 			<a href="https://www.github.com/fakedazon/" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoGithubFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoGithubFill} />
 			</a>
 			<a href="#" target="blank">
-				<Icon
-					size="24"
-					color="var(--lighterMiddleGray)"
-					className="icon-button"
-					src={RiLogoLinkedinFill}
-				/>
+				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoLinkedinFill} />
 			</a>
 		</div>
 		<p>
@@ -79,7 +49,6 @@
 <style>
 	footer {
 		width: 100%;
-		background-image: linear-gradient(to bottom, transparent 0%, var(--black) 50%);
 		margin: 0;
 		height: fit-content;
 		padding: 60px 0;
@@ -87,7 +56,8 @@
 		margin-top: 80px;
 	}
 	p {
-		color: var(--middleGray);
+		color: var(--white);
+		opacity: 0.25;
 		margin-bottom: 0;
 		width: 100%;
 		text-align: center;
