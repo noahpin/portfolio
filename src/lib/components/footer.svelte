@@ -36,7 +36,7 @@
 			<a href="https://www.github.com/fakedazon/" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoGithubFill} />
 			</a>
-			<a href="#" target="blank">
+			<a href="https://www.linkedin.com/in/noahpinales" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoLinkedinFill} />
 			</a>
 		</div>
