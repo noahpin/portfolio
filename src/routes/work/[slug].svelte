@@ -22,7 +22,7 @@
 	import { onMount } from 'svelte';
 	console.log(project);
 	onMount(() => {
-		document.documentElement.style.cssText = `--background: ${project.background.hex}; --text: ${project.text.hex}; --accent: ${project.accent.hex}; `;
+		document.documentElement.style.cssText = `--background: ${project.background.hex}; --text: ${project.text.hex};  `;
 	});
 </script>
 
@@ -45,12 +45,12 @@
 					</p>
 				</div>
 			{/if}
-			{#if project.projectTags}
+			{#if project.disciplines}
 				<div class="particle">
 					<span class="bold">DISCIPLINES</span>
-					{#each project.projectTags.tags as tag, i}
+					{#each project.disciplines as disc}
 						<p>
-							{tag}
+							{disc}
 						</p>
 					{/each}
 				</div>
@@ -87,7 +87,7 @@
 	h1 {
 		margin-top: 20px;
 		text-align: left;
-		max-width: 500px;
+		max-width: 700px;
 		margin-bottom: 30px;
 	}
 	.projectTimestamp {
@@ -103,8 +103,11 @@
 	}
 	.section {
 		max-width: 700px;
-		width: fit-content;
+		width: 100%;
 		margin-right: 60px;
+		display: flex;
+		justify-content: left;
+		gap: 100px;
 	}
 	#horizontal {
 		display: flex;
@@ -115,13 +118,24 @@
 	a:hover {
 		opacity: 0.5;
 	}
-	@media (max-width: 900px) {
+	@media (max-width: 1300px) {
 		#horizontal {
 			flex-direction: column;
 		}
 		.section {
 			max-width: none;
 			width: 100%;
+		}
+	}
+	@media (max-width: 800px) {
+		.section {
+			gap: 50px;
+		}
+	}
+	@media (max-width: 600px) {
+		.section {
+			flex-direction: column;
+			gap: 0;
 		}
 	}
 	img {

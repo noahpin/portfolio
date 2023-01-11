@@ -88,7 +88,7 @@
 	a {
 		margin-left: 50px;
 		padding: 5px;
-		font-size: 13px;
+		font-size: 15px;
 		text-transform: uppercase;
 		text-decoration: none;
 		transition: 0.3s background-size;

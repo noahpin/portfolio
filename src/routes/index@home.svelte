@@ -44,7 +44,7 @@
 		}, 5000);
 	}
 	onMount(() => {
-		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; --accent: #dad7d4; `;
+		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; `;
 	});
 </script>
 
@@ -100,7 +100,7 @@
 		opacity: 1 !important;
 	}
 	.project {
-		font-size: 13px;
+		font-size: 15px;
 		text-transform: uppercase;
 		transition: 0.3s background-size;
 		cursor: pointer;

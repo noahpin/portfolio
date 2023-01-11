@@ -25,9 +25,7 @@ const PROJECT_FRAGMENT = gql`
 		slug
 		description
 		timestamp
-		projectTags {
-			tags
-		}
+		disciplines
 		image {
 			url
 		}
@@ -38,9 +36,6 @@ const PROJECT_FRAGMENT = gql`
 			}
 		}
 		background {
-			hex
-		}
-		accent {
 			hex
 		}
 		text {

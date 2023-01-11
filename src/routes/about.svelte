@@ -19,7 +19,7 @@
 	var author = authors[0];
 	import { onMount } from 'svelte';
 	onMount(() => {
-		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; --accent: #dad7d4; `;
+		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4;  `;
 	});
 </script>
 
@@ -42,6 +42,16 @@
 						<a href={link}>
 							{title}
 						</a>
+					{/each}
+				</div>
+			{/if}
+		</div>
+		<div class="section">
+			{#if author.expertise.length > 0}
+				<div class="particle">
+					<span class="bold">EXPERTISE</span>
+					{#each author.expertise as expertise}<br />
+						<span style="text-transform: uppercase">{expertise}</span>
 					{/each}
 				</div>
 			{/if}
