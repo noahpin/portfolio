@@ -28,7 +28,7 @@
 </svelte:head>
 
 <article class="postContent">
-	<h1>{author.intro}</h1>
+	<h1>{@html author.intro}</h1>
 	<div id="horizontal">
 		<div class="section">
 			{@html marked(author.bio)}
@@ -38,20 +38,26 @@
 				<div class="particle">
 					<span class="bold">CONTACTS</span>
 					{#each author.contacts as { title, description, link }}<br />
-						<span style="text-transform: uppercase">{description} /</span>
+						<span style="text-transform: lowercase">{description} /</span>
 						<a href={link}>
 							{title}
 						</a>
 					{/each}
 				</div>
 			{/if}
-		</div>
-		<div class="section">
 			{#if author.expertise.length > 0}
 				<div class="particle">
 					<span class="bold">EXPERTISE</span>
 					{#each author.expertise as expertise}<br />
-						<span style="text-transform: uppercase">{expertise}</span>
+						<span style="text-transform: lowercase">{expertise}</span>
+					{/each}
+				</div>
+			{/if}
+			{#if author.skills.length > 0}
+				<div class="particle">
+					<span class="bold">SKILLS</span>
+					{#each author.skills as skill}<br />
+						<span style="text-transform: lowercase">{skill}</span>
 					{/each}
 				</div>
 			{/if}
@@ -68,6 +74,11 @@
 		text-align: left;
 		max-width: 1000px;
 		margin-bottom: 30px;
+		word-break: normal;
+		hyphens: auto
+	}
+	.particle {
+		min-width: 160px;
 	}
 	.projectTimestamp {
 		margin-top: 20px;
@@ -81,9 +92,12 @@
 		margin-top: 50px;
 	}
 	.section {
-		max-width: 700px;
-		width: fit-content;
+		max-width: 800px;
+		width: 100%;
 		margin-right: 60px;
+		display: flex;
+		justify-content: left;
+		gap: 50px;
 	}
 	#horizontal {
 		display: flex;
@@ -94,7 +108,7 @@
 	a:hover {
 		opacity: 0.5;
 	}
-	@media (max-width: 900px) {
+	@media (max-width: 1300px) {
 		#horizontal {
 			flex-direction: column;
 		}
@@ -102,5 +116,19 @@
 			max-width: none;
 			width: 100%;
 		}
+	}
+	@media (max-width: 800px) {
+		.section {
+			gap: 50px;
+		}
+	}
+	@media (max-width: 600px) {
+		.section {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+	img {
+		width: 100%;
 	}
 </style>

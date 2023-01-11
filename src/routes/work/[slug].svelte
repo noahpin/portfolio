@@ -47,9 +47,9 @@
 			{/if}
 			{#if project.disciplines}
 				<div class="particle">
-					<span class="bold">DISCIPLINES</span>
-					{#each project.disciplines as disc}
-						<p>
+					<span class="bold" >DISCIPLINES</span>
+					{#each  project.disciplines as disc}
+						<p  style="text-transform: lowercase"> 
 							{disc}
 						</p>
 					{/each}

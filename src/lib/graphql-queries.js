@@ -6,6 +6,7 @@ export const authorsQuery = gql`
 			intro
 			bio
 			expertise
+			skills
 			experiences {
 				description
 				link

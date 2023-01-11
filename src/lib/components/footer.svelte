@@ -53,7 +53,6 @@
 		height: fit-content;
 		padding: 60px 0;
 		padding-top: 80px;
-		margin-top: 80px;
 	}
 	p {
 		color: var(--white);
