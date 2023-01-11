@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>ABOUT ME</title>
+	<title>About Me ✧ Noah Pinales</title>
 </svelte:head>
 
 <article class="postContent">

@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>{project.name.toUpperCase()}</title>
+	<title>{project.name}</title>
 </svelte:head>
 
 <article class="postContent">

@@ -55,7 +55,7 @@
 </div>
 
 <svelte:head>
-	<title>NOAH</title>
+	<title>Noah Pinales ✧ Designer and Developer</title>
 </svelte:head>
 <div id="projectList">
 	{#each projects as { name, slug, image, projectTags, timestamp }, i}
