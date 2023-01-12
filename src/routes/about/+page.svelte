@@ -1,23 +1,13 @@
-<script context="module">
-	import { client } from '$lib/graphql-client';
-	import { authorsQuery } from '$lib/graphql-queries';
-	import { marked } from 'marked';
-
-	export const load = async () => {
-		const { authors } = await client.request(authorsQuery);
-
-		return {
-			props: {
-				authors
-			}
-		};
-	};
-</script>
-
 <script>
-	export let authors;
+	import { marked } from "marked";
+
+	export let data;
+	let { authors } = data;
+	$: ({ authors } = data); // so it stays in sync when `data` changes
+
+	$: console.log({ authors });
 	var author = authors[0];
-	import { onMount } from 'svelte';
+	import { onMount } from "svelte";
 	onMount(() => {
 		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4;  `;
 	});
@@ -75,7 +65,7 @@
 		max-width: 1000px;
 		margin-bottom: 30px;
 		word-break: normal;
-		hyphens: auto
+		hyphens: auto;
 	}
 	.particle {
 		min-width: 160px;

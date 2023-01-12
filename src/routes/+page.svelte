@@ -1,25 +1,13 @@
-<script context="module">
-	import ProjectCard from '$lib/components/project-card.svelte';
-	import { client } from '$lib/graphql-client';
-	import { projectsQuery } from '$lib/graphql-queries';
-
-	import { onMount } from 'svelte';
-
-	export const load = async () => {
-		const { projects } = await client.request(projectsQuery);
-
-		return {
-			props: {
-				projects
-			}
-		};
-	};
-</script>
-
 <script>
-	let background = '';
-	export let projects;
-	console.log(projects);
+	import ProjectCard from "$lib/components/project-card.svelte";
+	import { onMount } from "svelte";
+
+	let background = "";
+	export let data;
+	let { projects } = data;
+	$: ({ projects } = data); // so it stays in sync when `data` changes
+
+	$: console.log({ projects });
 	//create image visibility array for each project
 	let imageVisibility = new Array(projects.length).fill(false);
 	imageVisibility[0] = true;
@@ -50,7 +38,11 @@
 
 <div id="backgrounds">
 	{#each projects as { image }, i}
-		<img src={image[0].url} class={imageVisibility[i] ? 'imageVisible' : ''} alt="" />
+		<img
+			src={image[0].url}
+			class={imageVisibility[i] ? "imageVisible" : ""}
+			alt=""
+		/>
 	{/each}
 </div>
 
@@ -60,8 +52,8 @@
 <div id="projectList">
 	{#each projects as { name, slug, image, projectTags, timestamp }, i}
 		<a
-			class={imageVisibility[i] ? 'project highlight' : 'project'}
-			href={'work/' + slug}
+			class={imageVisibility[i] ? "project highlight" : "project"}
+			href={"work/" + slug}
 			on:mouseover={() => {
 				index = i;
 			}}

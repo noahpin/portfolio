@@ -1,26 +1,13 @@
-<script context="module">
-	import { client } from '$lib/graphql-client';
-	import { projectQuery } from '$lib/graphql-queries';
-	import { marked } from 'marked';
-	import StarIcon from '../../lib/components/star-icon.svelte';
-
-	export const load = async ({ params }) => {
-		const { slug } = params;
-		const variables = { slug };
-		const { project } = await client.request(projectQuery, variables);
-
-		return {
-			props: {
-				project
-			}
-		};
-	};
-</script>
-
 <script>
-	export let project;
-	import { onMount } from 'svelte';
-	console.log(project);
+	import { marked } from "marked";
+	import StarIcon from "../../../lib/components/star-icon.svelte";
+
+	export let data;
+	let { project } = data;
+	$: ({ project } = data); // so it stays in sync when `data` changes
+
+	$: console.log({ project });
+	import { onMount } from "svelte";
 	onMount(() => {
 		document.documentElement.style.cssText = `--background: ${project.background.hex}; --text: ${project.text.hex};  `;
 	});
@@ -47,9 +34,9 @@
 			{/if}
 			{#if project.disciplines}
 				<div class="particle">
-					<span class="bold" >DISCIPLINES</span>
-					{#each  project.disciplines as disc}
-						<p  style="text-transform: lowercase"> 
+					<span class="bold">DISCIPLINES</span>
+					{#each project.disciplines as disc}
+						<p style="text-transform: lowercase">
 							{disc}
 						</p>
 					{/each}

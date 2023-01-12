@@ -1,6 +1,0 @@
-{
-	"startCommand": "npm run dev",
-	"env": {
-		"VITE_GRAPHQL_API": "https://api-us-west-2.hygraph.com/v2/cl61cveww4oq701ukh4az577j/master"
-	}
-}

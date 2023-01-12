@@ -7,9 +7,5 @@
 	let y;
 </script>
 
-<svelte:window bind:innerWidth={y} />
-<main>
-	<Navbar width={y} />
-	<slot />
-	<Footer />
-</main>
+<slot />
+<Footer />
