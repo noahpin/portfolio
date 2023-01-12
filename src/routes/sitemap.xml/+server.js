@@ -1,3 +1,10 @@
+import { client } from "$lib/graphql-client";
+import { projectsQuery } from "$lib/graphql-queries";
+
+const { projects } = await client.request(projectsQuery);
+
+var WEBSITE = "https://noahp.xyz";
+
 export async function GET() {
 	return new Response(
 		`
@@ -10,7 +17,20 @@ export async function GET() {
         xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
       >
-        <!-- <url> elements go here -->
+        <url>
+            <loc>${WEBSITE}/about</loc>
+        </url>
+        <url>
+            <loc>${WEBSITE}</loc>
+        </url>
+        <url>
+            <loc>${WEBSITE}/work</loc>
+        </url>
+        ${projects.forEach((project) => {
+					`<url>
+                    <loc>${WEBSITE}/work/${project.slug}</loc>
+                </url>`;
+				})}
       </urlset>`.trim(),
 		{
 			headers: {
