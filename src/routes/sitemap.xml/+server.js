@@ -4,6 +4,13 @@ import { projectsQuery } from "$lib/graphql-queries";
 const { projects } = await client.request(projectsQuery);
 
 var WEBSITE = "https://noahp.xyz";
+var string = "";
+projects.forEach((project) => {
+	string += `<url>
+    <loc>${WEBSITE}/work/${project.slug}</loc>
+</url>`;
+});
+console.log(string);
 
 export async function GET() {
 	return new Response(
@@ -26,11 +33,7 @@ export async function GET() {
         <url>
             <loc>${WEBSITE}/work</loc>
         </url>
-        ${projects.forEach((project) => {
-					`<url>
-                    <loc>${WEBSITE}/work/${project.slug}</loc>
-                </url>`;
-				})}
+        ${string}
       </urlset>`.trim(),
 		{
 			headers: {
