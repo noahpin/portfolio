@@ -19,7 +19,6 @@
 		"graphql-request": "^5.1.0",
 		"svelte-hamburgers": "^4.0.1",
 		"svelte-icons-pack": "^2.0.0",
-		"svelte-markdown": "^0.2.2",
-		"svelte-sitemap": "^2.5.4"
+		"svelte-markdown": "^0.2.2"
 	}
 }
