@@ -2,7 +2,7 @@
   import ProjectCard from "$lib/components/project-card.svelte";
   import { createPopperActions } from "svelte-popperjs";
   import { onMount } from "svelte";
-  import {marked} from "marked"
+  import { marked } from "marked";
 
   const [popperRef, popperContent, getInstance] = createPopperActions({
     placement: "right",
@@ -19,7 +19,7 @@
   export let data;
   let { projects, authors } = data;
   $: ({ projects, authors } = data); // so it stays in sync when `data` changes
-	var author = authors[0];
+  var author = authors[0];
 
   $: console.log({ projects });
   //create image visibility array for each project
@@ -31,7 +31,7 @@
     inc();
   }, 5000);
   function inc() {
-	return
+    return;
     index++;
     if (index >= projects.length) {
       index = 0;
@@ -49,40 +49,41 @@
   onMount(() => {
     document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; `;
   });
-  var x = 0
-  var y = 0
-  function mouseMove(e){
-    if(!showTooltip) return
-	x = e.clientX 
-	y =  e.clientY
-	getInstance().update();
+  var x = 0;
+  var y = 0;
+  function mouseMove(e) {
+    if (!showTooltip) return;
+    x = e.clientX;
+    y = e.clientY;
+    getInstance().update();
   }
 </script>
+
 {#if showTooltip}
-<div id="backgrounds"use:popperContent={extraOpts}>
-  {#each projects as { image }, i}
-    <img
-      src={image[0].url}
-      class={imageVisibility[i] ? "imageVisible" : ""}
-      alt=""
-    />
-  {/each}
-</div>
+  <div id="backgrounds" use:popperContent={extraOpts}>
+    {#each projects as { image }, i}
+      <img
+        src={image[0].url}
+        class={imageVisibility[i] ? "imageVisible" : ""}
+        alt=""
+      />
+    {/each}
+  </div>
 {/if}
 <svelte:head>
   <title>Noah Pinales ✧ Designer and Developer</title>
 </svelte:head>
-<svelte:window
-on:mousemove={mouseMove}
-></svelte:window>
+<svelte:window on:mousemove={mouseMove} />
 
-<div id="dummyCursor" use:popperRef style={`top: ${y}px; left: ${x}px;`}></div>
+<div id="dummyCursor" use:popperRef style={`top: ${y}px; left: ${x}px;`} />
 
 <h2>{@html author.intro}</h2>
-<div id="projectList" 
-class={showTooltip ? "hovered" : ""}
-on:mouseenter={() => showTooltip = true}
-on:mouseleave={() => showTooltip = false}>
+<div
+  id="projectList"
+  class={showTooltip ? "hovered" : ""}
+  on:mouseenter={() => (showTooltip = true)}
+  on:mouseleave={() => (showTooltip = false)}
+>
   {#each projects as { name, slug, image, projectTags, timestamp }, i}
     <a
       class={imageVisibility[i] ? "project highlight" : "project"}
@@ -100,14 +101,14 @@ on:mouseleave={() => showTooltip = false}>
 </div>
 
 <style>
-	h2 {
+  h2 {
     margin-top: 100px;
-		text-align: left;
-		max-width: 1000px;
-		margin-bottom: 0px;
-		word-break: normal;
-		hyphens: auto;
-	}
+    text-align: left;
+    max-width: 1000px;
+    margin-bottom: 0px;
+    word-break: normal;
+    hyphens: auto;
+  }
   :global(body) {
     background: black;
   }
@@ -117,7 +118,7 @@ on:mouseleave={() => showTooltip = false}>
   }
   #backgrounds {
     width: 700px;
-	height:400px;
+    height: 400px;
     z-index: 100;
     background-size: cover;
     background-position: center;
@@ -131,6 +132,24 @@ on:mouseleave={() => showTooltip = false}>
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.1s;
+  }
+
+  @media (max-width: 900px) {
+    #backgrounds {
+      width: 400px;
+      height: 250px;
+      z-index: 100;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      pointer-events: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+  #backgrounds {
+    display: none
+  }
   }
   .imageVisible {
     opacity: 1 !important;
@@ -151,7 +170,7 @@ on:mouseleave={() => showTooltip = false}>
     border-top: 1px solid rgba(255, 255, 255, 0.212);
   }
   .hovered a {
-	opacity: 0.5;
+    opacity: 0.5;
   }
   .hovered .highlight {
     padding-left: 50px;
