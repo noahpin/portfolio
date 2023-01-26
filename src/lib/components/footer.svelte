@@ -24,14 +24,8 @@
 			<a href="https://www.instagram.com/noahp.xyz/" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoInstagramFill} />
 			</a>
-			<a href="#" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoTwitterFill} />
-			</a>
 			<a href="https://www.dribbble.com/noahpinales" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoDribbbleFill} />
-			</a>
-			<a href="#" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoBehanceFill} />
 			</a>
 			<a href="https://www.github.com/fakedazon/" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoGithubFill} />
@@ -41,12 +35,17 @@
 			</a>
 		</div>
 		<p>
-			&copy; Noah Pinales {`${new Date().getFullYear()}`} - All rights reserved
+			&copy; Noah Pinales {`${new Date().getFullYear()}`}
 		</p>
 	</div>
 </footer>
 
 <style>
+	a:hover {
+		opacity: 0.75;
+		margin: 0;
+		padding: 0;
+	}
 	footer {
 		width: 100%;
 		margin: 0;
@@ -60,7 +59,6 @@
 		margin-bottom: 0;
 		width: 100%;
 		text-align: center;
-		text-transform: uppercase;
 	}
 	.footer-content {
 		max-width: min(1000px, 80vw);

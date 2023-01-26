@@ -1,126 +1,176 @@
 <script>
-	import ProjectCard from "$lib/components/project-card.svelte";
-	import { onMount } from "svelte";
+  import ProjectCard from "$lib/components/project-card.svelte";
+  import { createPopperActions } from "svelte-popperjs";
+  import { onMount } from "svelte";
+  import {marked} from "marked"
 
-	let background = "";
-	export let data;
-	let { projects } = data;
-	$: ({ projects } = data); // so it stays in sync when `data` changes
+  const [popperRef, popperContent, getInstance] = createPopperActions({
+    placement: "right",
+    strategy: "fixed",
+  });
 
-	$: console.log({ projects });
-	//create image visibility array for each project
-	let imageVisibility = new Array(projects.length).fill(false);
-	imageVisibility[0] = true;
-	let index = 0;
-	let counter = 0;
-	let interval = setInterval(() => {
-		inc();
-	}, 5000);
-	function inc() {
-		index++;
-		if (index >= projects.length) {
-			index = 0;
-		}
-	}
-	$: {
-		imageVisibility = new Array(projects.length).fill(false);
-		imageVisibility[index] = true;
-		counter = 0;
-		clearInterval(interval);
-		interval = setInterval(() => {
-			inc();
-		}, 5000);
-	}
-	onMount(() => {
-		document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; `;
-	});
+  const extraOpts = {
+    modifiers: [{ name: "offset", options: { offset: [0, 8] } }],
+  };
+
+  let showTooltip = false;
+
+  let background = "";
+  export let data;
+  let { projects, authors } = data;
+  $: ({ projects, authors } = data); // so it stays in sync when `data` changes
+	var author = authors[0];
+
+  $: console.log({ projects });
+  //create image visibility array for each project
+  let imageVisibility = new Array(projects.length).fill(false);
+  imageVisibility[0] = false;
+  let index = 0;
+  let counter = 0;
+  let interval = setInterval(() => {
+    inc();
+  }, 5000);
+  function inc() {
+	return
+    index++;
+    if (index >= projects.length) {
+      index = 0;
+    }
+  }
+  $: {
+    imageVisibility = new Array(projects.length).fill(false);
+    imageVisibility[index] = true;
+    counter = 0;
+    clearInterval(interval);
+    interval = setInterval(() => {
+      inc();
+    }, 5000);
+  }
+  onMount(() => {
+    document.documentElement.style.cssText = `--background: #161412; --text: #dad7d4; `;
+  });
+  var x = 0
+  var y = 0
+  function mouseMove(e){
+    if(!showTooltip) return
+	x = e.clientX 
+	y =  e.clientY
+	getInstance().update();
+  }
 </script>
-
-<div id="backgrounds">
-	{#each projects as { image }, i}
-		<img
-			src={image[0].url}
-			class={imageVisibility[i] ? "imageVisible" : ""}
-			alt=""
-		/>
-	{/each}
+{#if showTooltip}
+<div id="backgrounds"use:popperContent={extraOpts}>
+  {#each projects as { image }, i}
+    <img
+      src={image[0].url}
+      class={imageVisibility[i] ? "imageVisible" : ""}
+      alt=""
+    />
+  {/each}
 </div>
-
+{/if}
 <svelte:head>
-	<title>Noah Pinales ✧ Designer and Developer</title>
+  <title>Noah Pinales ✧ Designer and Developer</title>
 </svelte:head>
-<div id="projectList">
-	{#each projects as { name, slug, image, projectTags, timestamp }, i}
-		<a
-			class={imageVisibility[i] ? "project highlight" : "project"}
-			href={"work/" + slug}
-			on:mouseover={() => {
-				index = i;
-			}}
-			on:focus={() => {
-				index = i;
-			}}
-		>
-			<span>{name}</span>
-			<span class="timestamp">{timestamp}</span>
-		</a>
-	{/each}
+<svelte:window
+on:mousemove={mouseMove}
+></svelte:window>
+
+<div id="dummyCursor" use:popperRef style={`top: ${y}px; left: ${x}px;`}></div>
+
+<h2>{@html author.intro}</h2>
+<div id="projectList" 
+class={showTooltip ? "hovered" : ""}
+on:mouseenter={() => showTooltip = true}
+on:mouseleave={() => showTooltip = false}>
+  {#each projects as { name, slug, image, projectTags, timestamp }, i}
+    <a
+      class={imageVisibility[i] ? "project highlight" : "project"}
+      href={"work/" + slug}
+      on:mouseover={() => {
+        index = i;
+      }}
+      on:focus={() => {
+        index = i;
+      }}
+    >
+      <h3>{name}</h3>
+    </a>
+  {/each}
 </div>
 
 <style>
-	#backgrounds {
-		width: 100vw;
-		height: 100vh;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 0;
-		background-size: cover;
-		background-position: center;
-		transition: 0.3s background-image;
-		overflow: hidden;
+	h2 {
+    margin-top: 100px;
+		text-align: left;
+		max-width: 1000px;
+		margin-bottom: 0px;
+		word-break: normal;
+		hyphens: auto;
 	}
-	#backgrounds img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		opacity: 0;
-		transition: opacity 0.3s;
-	}
-	.imageVisible {
-		opacity: 1 !important;
-	}
-	.project {
-		font-size: 15px;
-		text-transform: uppercase;
-		transition: 0.3s background-size;
-		cursor: pointer;
-		display: flex;
-		justify-content: space-between;
-		padding: 5px;
-		margin-left: -5px;
-		transition: background 0.2s;
-	}
-	.highlight {
-		background: white;
-	}
-	.highlight * {
-		color: black;
-	}
-	a {
-		text-decoration: none;
-	}
-	.timestamp {
-		opacity: 0.5;
-	}
-	#projectList {
-		position: absolute;
-		max-width: 500px;
-		width: 100%;
-		gap: 0;
-		z-index: 10;
-		float: right;
-		bottom: 0;
-	}
+  :global(body) {
+    background: black;
+  }
+  #dummyCursor {
+    position: fixed;
+    pointer-events: none;
+  }
+  #backgrounds {
+    width: 700px;
+	height:400px;
+    z-index: 100;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  #backgrounds img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+  .imageVisible {
+    opacity: 1 !important;
+  }
+  .project {
+    font-size: 55px;
+    transition: 0.3s background-size;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    transition: 0.1s;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.212);
+    opacity: 0.75;
+  }
+  .project:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.212);
+  }
+  .hovered a {
+	opacity: 0.5;
+  }
+  .hovered .highlight {
+    padding-left: 50px;
+    opacity: 1;
+  }
+  a {
+    text-decoration: none;
+  }
+  .timestamp {
+    opacity: 0.5;
+  }
+  #projectList {
+    position: relative;
+    width: 100%;
+    gap: 0;
+    z-index: 10;
+    float: right;
+    bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 150px;
+  }
 </style>

@@ -1,5 +1,6 @@
 <script>
 	import { marked } from "marked";
+	import Background from "../../../lib/components/background.svelte";
 	import StarIcon from "../../../lib/components/star-icon.svelte";
 
 	export let data;
@@ -11,13 +12,14 @@
 	onMount(() => {
 		document.documentElement.style.cssText = `--background: ${project.background.hex}; --text: ${project.text.hex};  `;
 	});
+	export let scrollY = 9
 </script>
 
 <svelte:head>
 	<title>{project.name}</title>
 </svelte:head>
 
-<article class="postContent">
+<article  class="postContent" >
 	<h1>{project.name}</h1>
 	<div id="horizontal">
 		<div class="section">
@@ -63,19 +65,22 @@
 		</div>
 	{/if}
 </article>
+<Background ></Background>
+<svelte:window  ></svelte:window>
 
 <style>
 	:global(body) {
-		--white: var(--text);
+		/*--white: var(--text)*/
 	}
 	.particle {
 		margin-bottom: 30px;
 	}
 	h1 {
-		margin-top: 20px;
+		margin-top: 100px;
 		text-align: left;
 		max-width: 700px;
 		margin-bottom: 30px;
+		hyphens: auto;
 	}
 	.projectTimestamp {
 		margin-top: 20px;

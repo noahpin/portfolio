@@ -60,7 +60,7 @@
 		margin-bottom: 30px;
 	}
 	h1 {
-		margin-top: 20px;
+		margin-top: 100px;
 		text-align: left;
 		max-width: 1000px;
 		margin-bottom: 30px;

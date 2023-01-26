@@ -68,3 +68,8 @@
     font-weight: normal;
     src: url('fonts/ResistSansText-Light.woff') format('woff');
 }
+@font-face {
+    font-family: 'Hologram';
+    font-weight: normal;
+    src: url('fonts/HOLOGRAM.woff') format('woff');
+}
