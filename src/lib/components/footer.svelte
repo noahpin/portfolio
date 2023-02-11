@@ -29,10 +29,10 @@
 			</a>
 			<a href="https://www.github.com/fakedazon/" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoGithubFill} />
-			</a>
+			</a><!--
 			<a href="https://www.linkedin.com/in/noahpinales" target="blank">
 				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoLinkedinFill} />
-			</a>
+			</a>-->
 		</div>
 		<p>
 			&copy; Noah Pinales {`${new Date().getFullYear()}`}
@@ -49,9 +49,16 @@
 	footer {
 		width: 100%;
 		margin: 0;
-		height: fit-content;
 		padding: 60px 0;
 		padding-top: 80px;
+		display: flex;
+	}
+	.footer-top {
+		display: flex;
+		justify-content: center;
+		gap: 30px;
+		align-items: center;
+		padding: 10px 0;
 	}
 	p {
 		color: var(--white);
@@ -63,13 +70,6 @@
 	.footer-content {
 		max-width: min(1000px, 80vw);
 		margin: auto;
-	}
-	.footer-top {
-		display: flex;
-		justify-content: center;
-		gap: 30px;
-		align-items: center;
-		padding: 10px 0;
 	}
 	.footer-left,
 	.footer-right {
