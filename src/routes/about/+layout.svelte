@@ -9,6 +9,5 @@
 </script>
 
 <slot />
-<Footer />
 
 <Background ></Background>
