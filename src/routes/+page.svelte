@@ -79,8 +79,8 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-		gap:20px;
-		width:30%;
+		gap: 20px;
+		width: 30%;
 	}
 	.home-project:hover h3,
 	.home-project:focus h3 {
@@ -95,5 +95,20 @@
 		float: right;
 		bottom: 0;
 		margin-top: 0;
+	}
+	@media (max-width: 800px) {
+		.home-project {
+			flex-direction: column;
+			gap: 10px;
+			margin-bottom: 40px;
+		}
+		.home-project img {
+			width: 100%;
+		}
+		.project-text {
+			width: 100%;
+
+			gap: 10px;
+		}
 	}
 </style>

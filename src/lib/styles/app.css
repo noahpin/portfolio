@@ -210,7 +210,7 @@ main {
 
 @media (max-width: 950px) {
   main {
-    padding: 5vw;
+    padding: 6vw;
     flex-direction: column;
     align-items: flex-start;
     justify-content: baseline;
