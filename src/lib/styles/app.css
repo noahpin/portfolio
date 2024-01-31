@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
 :root {
-  --white: #ffffff;
-  --black: #161412;
+  --background: #f0e8e3;
+  --accent: rgb(0, 47, 255);
+  --white: rgb(255, 233, 200);
+  --black: #e07000;
   --gray: #121213;
   --middleGray: #3f3f44;
   --lighterMiddleGray: #696970;
@@ -11,8 +14,12 @@
 }
 
 * {
-  color: var(--white);
-  font-family: "Resist Sans";
+  color: var(--accent);
+  font-family: "Uncut Sans";
+}
+
+body {
+  background: var(--background);
 }
 
 h1,
@@ -25,25 +32,22 @@ h4,
 h4 *,
 h5,
 h5 * {
-  font-family: "Hologram";
-  font-weight: normal;
-  letter-spacing: -2px;
-  text-transform: uppercase;
+  transform-origin: 0 0;
+  font-weight: 500 !important;
 }
 
 h1 {
   width: 100%;
   text-align: center;
-  font-size: 130px;
-  margin-top: 150px;
+  font-size: 80px;
+  margin-top: 0;
   word-wrap: break-word;
-  line-height: 90px;
   hyphens: auto;
+  line-height: 80px;
 }
 
 h2 {
-  font-size: 110px;
-  line-height: 80px;
+  font-size: 60px;
   width: 100%;
   word-wrap: break-word;
   text-align: center;
@@ -52,40 +56,32 @@ h2 {
 
 h3 {
   margin: 0;
-  font-size: 90px;
-  line-height: 70px;
-  word-wrap: break-word;
+  font-size: 50px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   h1 {
-    font-size: 100px;
-    line-height: 80px;
+    font-size: 60px;
   }
 
   h2 {
-    font-size: 90px;
-    line-height: 70px;
+    font-size: 50px;
   }
   h3 {
-	font-size: 70px;
-	line-height:60px;
+	font-size: 40px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   h1 {
-    font-size: 20vw;
-    line-height: 14.5vw;
+    font-size: 50px;
   }
 
   h2 {
-    font-size: 17vw;
-    line-height: 12.5vw;
+    font-size: 40px;
   }
   h3 {
-    font-size: 15vw;
-    line-height: 11.5vw;
+	font-size: 30px;
   }
 }
 
@@ -97,7 +93,22 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
+.svg-noise-bg {
+  position: absolute;
+  top:0; left:0;
+  width:100vw;
+  z-index: -100;
+}
 
+a {
+  font-size: 15px;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: underline wavy;
+  opacity: .75;
+  outline: none;
+}
 .home-title {
   font-size: 65px;
   text-align: center;
@@ -110,27 +121,6 @@ body {
   margin: 50px 0;
 }
 
-@media screen and (max-width: 1200px) and (min-width: 900px) {
-  .home-title {
-    font-size: min(5vw, 65px);
-  }
-}
-
-@media screen and (max-width: 900px) and (min-width: 700px) {
-  .home-title {
-    font-size: 65px;
-    text-align: left;
-    hyphens: manual;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .home-title {
-    font-size: min(10vw, 65px);
-    text-align: left;
-    hyphens: manual;
-  }
-}
 
 .coverImage {
   width: 100vw;
@@ -166,7 +156,7 @@ pre {
   margin: auto;
   display: flex;
   align-items: center;
-  background: var(--white);
+  background: var(--accent);
   padding: 6px 10px;
   margin-top: 15px;
 }
@@ -176,9 +166,6 @@ pre {
   text-decoration: none;
 }
 
-article a {
-  color: var(--white);
-}
 
 .bold {
   font-weight: bold;
@@ -212,14 +199,25 @@ input[type="reset"] {
 
 main {
   position: relative;
-  margin: 80px;
-  min-height: calc(100vh - 160px);
+  padding: 40px;
   box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: baseline;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   main {
-    margin: 5vw;
-    min-height: calc(100vh - 10vw);
+    padding: 5vw;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: baseline;
   }
+}
+
+p {
+  font-weight: lighter !important;
+  margin: 0;
 }

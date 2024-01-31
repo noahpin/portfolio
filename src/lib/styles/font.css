@@ -1,75 +1,100 @@
+/* happy-times-NG Bold */
 @font-face {
-    font-family: 'Akira';
-    src: url('fonts/Akira.eot');
-    /* IE9*/
-    src: url('fonts/Akira.eot#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('fonts/Akira.woff2') format('woff2'),
-        url('fonts/Akira.woff') format('woff'),
-        url('fonts/Akira.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
+    font-family: 'Happy Times';
+    src: url('fonts/happy-times-NG_bold_master_web.woff2') format('woff2'),
+        url('fonts/happy-times-NG_bold_master_web.woff') format('woff'),
+        url('fonts/happy-times-NG_bold_master_web.ttf') format('truetype');
     font-weight: bold;
-    src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-        url('fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    font-style: normal;
 }
 
+/* happy-times-NG Italic */
 @font-face {
-    font-family: 'JetBrains Mono';
-    font-weight: bold;
-    font-style: italic;
-    src: url('fonts/JetBrainsMono-BoldItalic.ttf') format('woff2'),
-        url('fonts/JetBrainsMono-BoldItalic.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
-    font-weight: normal;
-    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('fonts/JetBrainsMono-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
+    font-family: 'Happy Times';
+    src: url('fonts/happy-times-NG_italic_master_web.woff2') format('woff2'),
+        url('fonts/happy-times-NG_italic_master_web.woff') format('woff'),
+        url('fonts/happy-times-NG_italic_master_web.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
-    src: url('fonts/JetBrainsMono-Italic.woff2') format('woff2'),
-        url('fonts/JetBrainsMono-Italic.ttf') format('truetype');
 }
 
+/* happy-times-NG Regular */
 @font-face {
-    font-family: 'Disket Mono';
+    font-family: 'Happy Times';
+    src: url('fonts/happy-times-NG_regular_master_web.woff2') format('woff2'),
+        url('fonts/happy-times-NG_regular_master_web.woff') format('woff'),
+        url('fonts/happy-times-NG_regular_master_web.ttf') format('truetype');
     font-weight: normal;
-    src: url('fonts/Disket-Mono-Regular.woff') format('woff');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Disket Mono';
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-Regular.woff2') format('woff2'),
+        url('fonts/UncutSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-RegularItalic.woff2') format('woff2'),
+        url('fonts/UncutSans-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-Medium.woff2') format('woff2'),
+        url('fonts/UncutSans-Medium.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-MediumItalic.woff2') format('woff2'),
+        url('fonts/UncutSans-MediumItalic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-Bold.woff2') format('woff2'),
+        url('fonts/UncutSans-Bold.woff') format('woff');
     font-weight: bold;
-    src: url('fonts/Disket-Mono-Bold.woff') format('woff');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Basteleur';
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-BoldItalic.woff2') format('woff2'),
+        url('fonts/UncutSans-BoldItalic.woff') format('woff');
     font-weight: bold;
-    src: url('fonts/Basteleur-Bold.woff') format('woff');
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-Light.woff2') format('woff2'),
+        url('fonts/UncutSans-Light.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Basteleur';
-    font-weight: normal;
-    src: url('fonts/Basteleur-Moonlight.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Resist Sans';
-    font-weight: normal;
-    src: url('fonts/ResistSansText-Light.woff') format('woff');
+    font-family: 'Uncut Sans';
+    src: url('fonts/UncutSans-LightItalic.woff2') format('woff2'),
+        url('fonts/UncutSans-LightItalic.woff') format('woff');
+    font-weight: lighter;
+    font-style: italic;
 }
 @font-face {
-    font-family: 'Hologram';
-    font-weight: normal;
-    src: url('fonts/HOLOGRAM.woff') format('woff');
+    font-family: 'Hedvig';
+    src: url('fonts/HedvigLettersSerif12pt-Regular.woff2') format('woff2');
+    font-weight: lighter;
+    font-style: italic;
 }

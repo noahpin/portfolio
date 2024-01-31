@@ -1,43 +1,12 @@
 <script>
-	import Icon from 'svelte-icons-pack/Icon.svelte';
-	import RiLogoInstagramFill from 'svelte-icons-pack/ri/RiLogoInstagramFill';
-	import RiLogoGithubFill from 'svelte-icons-pack/ri/RiLogoGithubFill';
-	import RiLogoLinkedinFill from 'svelte-icons-pack/ri/RiLogoLinkedinFill';
-	import RiLogoTwitterFill from 'svelte-icons-pack/ri/RiLogoTwitterFill';
-	import RiLogoDribbbleFill from 'svelte-icons-pack/ri/RiLogoDribbbleFill';
-	import RiLogoBehanceFill from 'svelte-icons-pack/ri/RiLogoBehanceFill';
-	import Logotype from './logotype.svelte';
+	import NavfooterSharedContent from "./navfooter-shared-content.svelte";
+	export let authors;
+	let author = authors[0];
+	$: author = authors[0];
 </script>
 
 <footer class=" footer-center">
-	<div class="footer-content">
-		<div class="footer-top">
-			<!--
-			<div class="footer-left">
-				<Logotype size="75" />
-			</div>
-			<div class="footer-right">
-				<a class="link link-hover" href="/projects">Portfolio</a>
-				<a class="link link-hover" href="/posts">Blog</a>
-				<a class="link link-hover" href="/about">About</a>
-			</div>-->
-			<a href="https://www.instagram.com/noahp.xyz/" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoInstagramFill} />
-			</a>
-			<a href="https://www.dribbble.com/noahpinales" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoDribbbleFill} />
-			</a>
-			<a href="https://www.github.com/fakedazon/" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoGithubFill} />
-			</a><!--
-			<a href="https://www.linkedin.com/in/noahpinales" target="blank">
-				<Icon size="24" color="var(--white)" className="icon-button" src={RiLogoLinkedinFill} />
-			</a>-->
-		</div>
-		<p>
-			&copy; Noah Pinales {`${new Date().getFullYear()}`}
-		</p>
-	</div>
+	<NavfooterSharedContent nav={false} {author} />
 </footer>
 
 <style>
@@ -49,9 +18,9 @@
 	footer {
 		width: 100%;
 		margin: 0;
-		padding: 60px 0;
-		padding-top: 80px;
+		padding-top: 40px;
 		display: flex;
+		border-top: 2px dashed var(--accent);
 	}
 	.footer-top {
 		display: flex;

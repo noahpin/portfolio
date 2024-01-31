@@ -1,28 +1,38 @@
 <script>
-	import Footer from '$lib/components/footer.svelte';
-	import Navbar from '$lib/components/navbar.svelte';
-	import Background from '../lib/components/background.svelte';
-	import { onMount } from 'svelte';
-    import { page } from '$app/stores';
-	import '$lib/styles/app.css';
-	import '$lib/styles/font.css';
-	let y;
-	let scrollY
-onMount(()=> {
-	page.subscribe(() => {
-		document.body.scrollTo({top: 0, behavior: 'smooth'});
+	import Footer from "$lib/components/footer.svelte";
+	import Navbar from "$lib/components/navbar.svelte";
+	import "$lib/styles/app.css";
+	import "$lib/styles/font.css";
+	import { onMount } from "svelte";
+	import { afterNavigate } from "$app/navigation";
+	import { beforeNavigate } from "$app/navigation";
+	import { page } from "$app/stores";
+
+	export let data;
+	let { authors } = data;
+	$: ({ authors } = data); // so it stays in sync when `data` changes
+	let home = $page.route.id == '/';
+	$: home = $page.route.id == '/';
+	onMount(() => {
+		page.subscribe(() => {
+			document.body.scrollTo({ top: 0 });
+		});
 	});
-
-})
-
+	let w, h, sy;
+	let svgh;
+	let breakpoint = false;
+	$: svgh = h + sy;
+	$: breakpoint = w <= 950;
 </script>
 
-<svelte:window bind:innerWidth={y} bind:scrollY   />
-<main on:scroll={(e) => console.log(e.target.scrollTop)} >
-	<Navbar width={y} />
-	<slot scrollY={scrollY}  />
-	<Footer></Footer>
-	
-</main>
+<svelte:window bind:innerWidth={w}  bind:innerHeight={h} bind:scrollY={sy}/>
 
-<Background ></Background>
+<main>
+	<Navbar {authors} width={w} {breakpoint} {home} />
+	<div>
+		<slot />
+	</div>
+	{#if breakpoint}
+		<Footer {authors} width={w}{breakpoint}></Footer>
+	{/if}
+</main>
