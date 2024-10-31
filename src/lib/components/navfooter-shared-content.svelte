@@ -24,7 +24,7 @@
 	{#if showMainContent}
 		{#if author.contacts.length > 0}
 			<div class="particle">
-				<span>---reach me---</span>
+				<span><em>reach me</em></span>
 				{#each author.contacts as { title, description, link }}
 					<div class="contact-block">
 						<div style="text-transform: lowercase">{description}</div>
@@ -38,7 +38,7 @@
 		{/if}
 		{#if author.expertise.length > 0}
 			<div class="particle">
-				<span>---expertise---</span>
+				<span><em>expertise</em></span>
 				{#each author.expertise as expertise}<br />
 					<span style="text-transform: lowercase">{expertise}</span>
 				{/each}

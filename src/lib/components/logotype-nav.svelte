@@ -1,5 +1,5 @@
 <script>
-	export let fill = 'var(--white)';
+	export let fill = 'black';
 	export let size = 100;
 	export let visible = true;
 </script>

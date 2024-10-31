@@ -72,7 +72,7 @@
 		text-decoration: none;
 	}
 	.home-project:focus {
-		outline: 2px dashed var(--accent);
+		outline: 2px dashed var(--white);
 		outline-offset: 5px;
 	}
 	.project-text {
@@ -85,6 +85,7 @@
 	.home-project:hover h3,
 	.home-project:focus h3 {
 		text-decoration: underline wavy;
+		text-decoration-color: var(--accent);
 		text-decoration-thickness: 2px;
 	}
 	#projectList {

@@ -31,7 +31,7 @@
 		<div class="section">
 			{#if project.timestamp}
 				<div class="particle">
-					<span>---when---</span>
+					<span><em>when</em></span>
 					<p>
 						{getFormattedDate(new Date(project.timestamp))}
 					</p>
@@ -39,7 +39,7 @@
 			{/if}
 			{#if project.disciplines}
 				<div class="particle">
-					<span>---disciplines---</span>
+					<span><em>disciplines</em></span>
 					{#each project.disciplines as disc}
 						<p style="text-transform: lowercase">
 							{disc}
@@ -49,7 +49,7 @@
 			{/if}
 			{#if project.projectLinks.length > 0}
 				<div class="particle">
-					<span>---links---</span>
+					<span><em>links</em></span>
 					{#each project.projectLinks as { link, title }}
 						<p>
 							<a target="_blank" href={link}>{title}</a>
@@ -100,6 +100,7 @@
 	}
 	a:hover {
 		opacity: 0.5;
+		color: var(--accent);
 	}
 	@media (max-width: 1300px) {
 		.section {

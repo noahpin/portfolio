@@ -94,6 +94,7 @@
 	}
 	a:hover {
 		opacity: 0.5;
+		color: var(--accent);
 	}
 	@media (max-width: 1300px) {
 		#horizontal {

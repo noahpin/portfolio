@@ -14,7 +14,8 @@
 	export let authors;
 	let author = authors[0];
 	$: author = authors[0];
-	let fill = "var(--accent)";
+	let fill = "var(--white)";
+	let fill2 = "var(--accent)";
 	export let breakpoint = false;
 	export let home = false;
 </script>
@@ -61,7 +62,7 @@
 							y="169.704"
 							width="38.271"
 							height="38.271"
-							{fill}
+							fill={fill2}
 							stroke-width="0"
 						/>
 					</g>
@@ -95,7 +96,7 @@
 		align-items: flex-start;
 		flex-shrink: 0;
 		flex-grow: 1;
-		border-right: 2px dashed var(--accent);
+		border-right: 2px dashed var(--white);
 		align-self: stretch;
 		flex: 1;
 		margin-bottom: auto;
@@ -110,7 +111,7 @@
 		opacity: 0.75;
 	}
 	#logotype:focus {
-		outline: 2px dashed var(--accent);
+		outline: 2px dashed var(--white);
 		outline-offset: 5px;
 	}
 
@@ -127,7 +128,7 @@
 			width: 100%;
 			flex-direction: column;
 			border: none;
-			border-bottom: 2px dashed var(--accent);
+			border-bottom: 2px dashed var(--white);
 		}
 		.nav-content {
 			display: flex;
@@ -159,7 +160,7 @@
 			width: 100%;
 			flex-direction: column;
 			border: none;
-			border-bottom: 2px dashed var(--accent);
+			border-bottom: 2px dashed var(--white);
 		}
 	}
 </style>
