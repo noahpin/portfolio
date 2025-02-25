@@ -28,11 +28,11 @@
 <svelte:window bind:innerWidth={w}  bind:innerHeight={h} bind:scrollY={sy}/>
 
 <main>
-	<Navbar {authors} width={w} {breakpoint} {home} />
+	<!-- <Navbar {authors} width={w} {breakpoint} {home} /> -->
 	<div>
-		<slot />
+		<slot {sy} />
 	</div>
 	{#if breakpoint}
-		<Footer {authors} width={w}{breakpoint}></Footer>
+		<!-- <Footer {authors} width={w}{breakpoint}></Footer> -->
 	{/if}
 </main>

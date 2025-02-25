@@ -5,7 +5,6 @@
 	let { authors } = data;
 	$: ({ authors } = data); // so it stays in sync when `data` changes
 
-	$: console.log({ authors });
 	var author = authors[0];
 	import { onMount } from "svelte";
 </script>

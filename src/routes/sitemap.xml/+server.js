@@ -10,7 +10,6 @@ projects.forEach((project) => {
     <loc>${WEBSITE}/work/${project.slug}</loc>
 </url>`;
 });
-console.log(string);
 
 export async function GET() {
 	return new Response(

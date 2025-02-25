@@ -6,7 +6,6 @@
 	let { project } = data;
 	$: ({ project } = data); // so it stays in sync when `data` changes
 
-	$: console.log({ project });
 	import { onMount } from "svelte";
 	
 	function getFormattedDate(date) {
