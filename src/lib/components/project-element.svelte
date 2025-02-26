@@ -1,7 +1,10 @@
 <script>
 	import {hoveredElementStore} from "$lib/stores.js";
     import TextWriteon from "./text-writeon.svelte";
+    import { onMount } from "svelte";
+    import {tweened} from "svelte/motion"
 	export let project;
+	let scrollY = 0;
 	function getFormattedDate(date) {
 		let year = date.getFullYear();
 		let month = (1 + date.getMonth()).toString().padStart(2, "0");
@@ -11,9 +14,52 @@
 	}
     console.log(project)
     let imageLoaded = false;
+    let boundingRect = null; 
+    let el = null;
+    onMount(() => {
+        boundingRect = el.getBoundingClientRect();
+    })
+    let mX = 0;
+    let mY = 0;
+    // $: console.log(mX, mY + scrollY)
+    //make a tween for a little parallax relative to the center of the bounding rect and mX/mY, based on the same requirements of class:suppress. if ont suppressed, set it to 0
+    let parallaxX = tweened(0, {duration: 100});
+    let parallaxY = tweened(0, {duration: 100});
+    let scale = tweened(1, {duration: 100});
+    $: if (boundingRect) {
+        if (project != $hoveredElementStore) {
+            parallaxX.set(0);
+            parallaxY.set(0);
+            scale.set(1);
+        } else {
+            parallaxX.set((mX - boundingRect.left - boundingRect.width / 2) / 24);
+            parallaxY.set(((mY - boundingRect.top - boundingRect.height / 2) + scrollY) / 24);
+            scale.set(1.05);
+        }
+    }
+    export let columns = 3;
+    //effect to reset the boundingclientrect once columns are changed
+    $: if (columns != 10 && el) {
+        console.log('regenerating boundignrect')
+        boundingRect = el.getBoundingClientRect();
+    }
 </script>
 
+<svelte:window
+    on:mousemove={(e)=>{
+        mX = e.clientX;
+        mY = e.clientY;
+    }}
+    
+></svelte:window>
+
+<svelte:body
+	on:scroll={(e) => {
+		scrollY = e.target.scrollTop;
+	}}
+/>
 <a
+bind:this={el}
 	class="home-project"
 	href={"work/" + project.slug}
     class:suppress={project != $hoveredElementStore && $hoveredElementStore != null}
@@ -22,14 +68,13 @@
 	on:focus={() => hoveredElementStore.set(project)}
 	on:blur={() => hoveredElementStore.set(null)}
 >
-	<img  on:load={()=> imageLoaded = true} style:aspect-ratio={`${project.image[0].width} / ${project.image[0].height}`} src={project.image[0].url} alt="" />
-    <div class="project-title">
+	<img style={`--offsety: ${$parallaxY}px; --offsetx: ${$parallaxX}px; --scale: ${$scale}`} on:load={()=> imageLoaded = true} style:aspect-ratio={`${project.image[0].width} / ${project.image[0].height}`} src={project.image[0].url} alt="" />
+    <div  style={`--offsety: ${$parallaxY*2}px; --offsetx: ${$parallaxX*2}px`} class="project-title">
         <TextWriteon text={project.name} duration={150} show={$hoveredElementStore == project} />
     </div>
-    <div class="project-barcode">
+    <div  style={`--offsety: ${$parallaxY/2}px; --offsetx: ${$parallaxX/2}px;`} class="project-barcode">
         <TextWriteon text={project.name} duration={100} show={$hoveredElementStore == project} />
     </div>
-	<img  class="inverted-image" src={project.image[0].url} alt="" />
 	<!-- <div class="project-text">
         <h3>{project.name}</h3>
         <div class="bottom">
@@ -47,7 +92,7 @@
 		justify-content: flex-start;
 		gap: 40px;
         padding: 8px;
-        transition: 0.2s opacity;
+        transition: 0.2s opacity, 0.2s filter;
         z-index: 10;
         box-sizing: border-box;
 	}
@@ -56,9 +101,10 @@
     }
 	.home-project img {
 		width: 100%;
-        transition: 0.2s opacity, 0.2s transform, 0.2s filter;
+        transition: 0.2s opacity, 0.2s filter;
         pointer-events: none;
         z-index: 7;
+        transform: translate(var(--offsetx), var(--offsety)) scale(var(--scale));
 	}
     .inverted-image {
         position: absolute;
@@ -78,11 +124,9 @@
         position: relative;
 	}
 	.home-project:focus {
-		outline: 2px dashed var(--white);
 		outline-offset: 5px;
 	}
     .home-project:hover img, .home-project:focus img {
-        transform: scale(1.05);
         /* filter: sepia(1) saturate(0) contrast(.95) brightness(1.4); */
         /* opacity: 0; */
     }
@@ -92,12 +136,10 @@
     }
     .home-project:hover .project-title, .home-project:focus .project-title {
         opacity: 1;
-        transition: 0s 0s opacity, transform 0.2s;
-        transform: translate(-12px, -12px);
+        transition: 0s 0s opacity;
     }
     .home-project:hover .project-barcode, .home-project:focus .project-barcode {
         opacity: 1;
-        transform: translate(20px, 20px);
     }
     .project-title, .project-barcode {
         position: absolute;
@@ -106,11 +148,10 @@
         justify-content: center;
         pointer-events: none;
         color: var(--accent);
-        font-size: 3rem;
-        transition: 0s 0.15s opacity, transform 0.2s;
+        font-size: 2.3rem;
+        text-wrap: wrap;
+        transition: 0s 0.15s opacity;
             line-height: 2.3rem;
-        -webkit-background-clip: text;
-        background-clip: text;
     }
 
     .project-title {
@@ -120,6 +161,7 @@
         padding: 8px;
         background: black;
         opacity: 0;
+        transform: translate(calc(var(--offsetx) - 20px), calc(var(--offsety) - 20px));
     }
     :global(.project-title *) {
         font-family: "Instrument Serif";
@@ -134,6 +176,7 @@
         z-index: 5;
         font-family: "Libre Barcode 128";
         right: 0; bottom: 0;
+        transform: translate(calc(var(--offsetx) + 20px), calc(var(--offsety) + 20px));
     }
 
     :global(.project-barcode *) {
@@ -143,21 +186,6 @@
         color: var(--accent);
     }
     .suppress {
-        opacity: 0.5;
+        filter: brightness(.5) saturate(0);
     }
-	@media (max-width: 800px) {
-		.home-project {
-			flex-direction: column;
-			gap: 10px;
-			margin-bottom: 40px;
-		}
-		.home-project img {
-			width: 100%;
-		}
-		.project-text {
-			width: 100%;
-
-			gap: 10px;
-		}
-	}
 </style>

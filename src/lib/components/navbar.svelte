@@ -69,7 +69,8 @@
 				</g>
 			</svg>
 		</a>
-		<NavfooterSharedContent {author} {breakpoint} {home} nav={true}></NavfooterSharedContent>
+		<a class="particle" href="/">WORK</a>
+		<a class="particle" href="/about">ABOUT</a>
 	</div>
 </div>
 
@@ -91,76 +92,55 @@
 		width: 180px;
 		z-index: 999999999999999999999;
 		display: flex;
-		flex-direction: column;
 		justify-content: flex-start;
-		align-items: flex-start;
+		align-items: center;
 		flex-shrink: 0;
 		flex-grow: 1;
-		border-right: 2px dashed var(--white);
 		align-self: stretch;
 		flex: 1;
 		margin-bottom: auto;
+		gap: 40px;
 	}
-	#logotype{
+	#logotype {
 		margin: 0;
 		cursor: pointer;
 		padding: 0;
-		margin-bottom: 15px;
 	}
-	#logotype:hover{
+	#logotype:hover {
 		opacity: 0.75;
 	}
-	#logotype:focus {
-		outline: 2px dashed var(--white);
-		outline-offset: 5px;
-	}
 
-	@media (max-width: 950px) {
-		.nav-wrapper {
-			margin-right: 0px;
-			width: 100%;
-			height: fit-content;
-			margin-bottom: 40px;
-		}
-		.nav {
-			position: relative;
-			padding-right: 0px;
-			width: 100%;
-			flex-direction: column;
-			border: none;
-			border-bottom: 2px dashed var(--white);
-		}
-		.nav-content {
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: row;
-			gap: 40px;
-			margin-bottom: 40px;
-		}
-		.nav-content .particle {
-			flex: 1 1 160px;
-			margin-bottom: 0;
-		}
-		.contact-block {
-			display: flex;
-			justify-content: flex-start;
-			gap:16px;
-		}
+	/* @media (max-width: 950px) { */
+	.nav-wrapper {
+		margin-right: 0px;
+		width: 100%;
+		height: fit-content;
+		margin-bottom: 8px;
+		padding: 8px;
 	}
-	@media (max-width: 650px) {
-		.nav-wrapper {
-			margin-right: 0px;
-			width: 100%;
-			height: fit-content;
-			margin-bottom: 40px;
-		}
-		.nav {
-			position: relative;
-			padding-right: 0px;
-			width: 100%;
-			flex-direction: column;
-			border: none;
-			border-bottom: 2px dashed var(--white);
-		}
+	.nav {
+		position: relative;
+		padding-right: 0px;
+		width: 100%;
+		border: none;
 	}
+	.nav-content {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 40px;
+	}
+	.nav-content .particle {
+		flex: 1 1 160px;
+		margin-bottom: 0;
+	}
+	.contact-block {
+		display: flex;
+		justify-content: flex-start;
+		gap: 16px;
+	}
+	a {
+		font-weight: bold;
+	}
+	/* } */
 </style>

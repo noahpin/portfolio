@@ -56,7 +56,7 @@
 		margin-bottom: 30px;
 	}
 	h1 {
-		margin-top: 100px;
+		margin-top: 50px;
 		text-align: left;
 		max-width: 1000px;
 		margin-bottom: 30px;
@@ -90,10 +90,6 @@
 		justify-content: left;
 		align-items: baseline;
 		gap: 40px;
-	}
-	a:hover {
-		opacity: 0.5;
-		color: var(--accent);
 	}
 	@media (max-width: 1300px) {
 		#horizontal {

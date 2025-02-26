@@ -8,19 +8,19 @@
 </script>
 
 <div class="nav-content">
-    {#if breakpoint ? nav : true}
-	<div class="particle">
-		{#if breakpoint ? home : true}
-			{@html author.intro}
-		{/if}
-		{#if breakpoint && !nav}
-			<div class="particle">
-				<br />
-				&copy; Noah Pinales {`${new Date().getFullYear()}`}
-			</div>
-		{/if}
-	</div>
-    {/if}
+	{#if breakpoint ? nav : true}
+		<div class="particle">
+			{#if breakpoint ? home : true}
+				{@html author.intro}
+			{/if}
+			{#if breakpoint && !nav}
+				<div class="particle">
+					<br />
+					&copy; Noah Pinales {`${new Date().getFullYear()}`}
+				</div>
+			{/if}
+		</div>
+	{/if}
 	{#if showMainContent}
 		{#if author.contacts.length > 0}
 			<div class="particle">
@@ -67,22 +67,21 @@
 		justify-content: space-between;
 	}
 
-	@media (max-width: 950px) {
-		.nav-content {
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: row;
-			gap: 40px;
-			margin-bottom: 40px;
-		}
-		.nav-content .particle {
-			flex: 1 1 160px;
-			margin-bottom: 0;
-		}
-		.contact-block {
-			display: flex;
-			justify-content: flex-start;
-			gap: 16px;
-		}
+	/* @media (max-width: 950px) { */
+	.nav-content {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 40px;
 	}
+	.nav-content .particle {
+		flex: 1 1 160px;
+		margin-bottom: 0;
+	}
+	.contact-block {
+		display: flex;
+		justify-content: flex-start;
+		gap: 16px;
+	}
+	/* } */
 </style>

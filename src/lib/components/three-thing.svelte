@@ -16,7 +16,7 @@
 	function init() {
 		renderer = new THREE.WebGLRenderer();
 		renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(window.innerWidth, 200);
+		renderer.setSize(window.innerWidth, 400);
 		renderer.setAnimationLoop(animate);
 		container.appendChild(renderer.domElement);
 
@@ -24,7 +24,7 @@
 
 		camera = new THREE.PerspectiveCamera(
 			70,
-			window.innerWidth / 200,
+			window.innerWidth / 400,
 			1,
 			1000
 		);
@@ -75,7 +75,7 @@
 				tDiffuse: { value: null },
                 resolution: { value: new THREE.Vector2(
                     window.innerWidth,
-                    200
+                    400
                 ) },
                 pixelRatio: { value: window.devicePixelRatio },
 			},
@@ -139,7 +139,7 @@
             vec2 uv = vec2(vUv.x, vUv.y);
             vec2 fc =  ((uv + 1.)) * resolution.xy;
             vec2 pos = (fc - resolution.xy) * 0.5;
-			gl_FragColor = getValue(average, pos) ? vec4(0., 0., 0., 1.) : vec4(.68235294117, 1., 0., 1.);
+			gl_FragColor = getValue(average, pos) ? vec4(0., 0., 0., 1.) : vec4(110. / 255., 1., 0., 1.);
 
 		}`,
 		};
@@ -156,14 +156,14 @@
 	}
 
 	function onWindowResize() {
-		camera.aspect = window.innerWidth / 200;
+		camera.aspect = window.innerWidth / 400;
 		camera.updateProjectionMatrix();
 
-		renderer.setSize(window.innerWidth, 200);
-        composer.setSize(window.innerWidth, 200);
+		renderer.setSize(window.innerWidth, 400);
+        composer.setSize(window.innerWidth, 400);
         composer.passes.forEach(pass => {
             if (pass instanceof ShaderPass && pass.uniforms['resolution']) {
-            pass.uniforms['resolution'].value.set(window.innerWidth, 200);
+            pass.uniforms['resolution'].value.set(window.innerWidth, 400);
             }
         });
 	}
@@ -185,7 +185,7 @@
 		position: relative;
 		width: 100% !important;
 		gap: 0;
-        height : 200px;
+        height : 400px;
         overflow: hidden;
 		z-index: 10;
 		bottom: 0;
