@@ -44,11 +44,9 @@
 	on:mouseleave={() => (showTooltip = false)}
 >
 <!-- using the columns, skip every other so that we can fill row first -->
- {#each new Array(columns) as _, i}
-	{#each projects.filter((_, j) => j % columns == i) as project}
-		<ProjectElement {project} {w} {columns} />
-	{/each}
- {/each}
+{#each projects as project}
+<ProjectElement {project} {w} {columns} />
+{/each}
 </div>
 
 <style>
