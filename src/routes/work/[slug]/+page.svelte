@@ -81,17 +81,7 @@
 	}
 	.gallery {
 		margin-top: 50px;
-		columns: 3;
-	}
-	@media (max-width: 1150px) {
-		.gallery {
-			columns: 2;
-		}
-	}
-	@media (max-width: 750px) {
-		.gallery {
-			columns: 1;
-		}
+		/* columns: 3; */
 	}
 	.section {
 		max-width: 700px;

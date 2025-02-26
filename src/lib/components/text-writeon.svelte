@@ -6,8 +6,8 @@
 
 	let displayText = "";
 	let interval;
-	let cutIndex = new tweened(-3, { duration });
-	$: cutIndex.set(show ? text.length : -3);
+	let cutIndex = new tweened(-4, { duration });
+	$: cutIndex.set(show ? text.length : -4);
     function randomChar() {
         const chars = "!@#$%^&*()[]{}-=_+~";
         return chars[Math.floor(Math.random() * chars.length)];
@@ -15,7 +15,7 @@
 </script>
 
 {#each text as char, i}
-{#if i < $cutIndex}{@html  char.replace(" ", "&nbsp;")}{:else if (i-1 == Math.floor($cutIndex) || i-2 == Math.floor($cutIndex))}{randomChar()}{/if}
+{#if i < $cutIndex}{@html  char.replace(" ", "&nbsp;")}{:else if (i-1 == Math.floor($cutIndex) || i-2 == Math.floor($cutIndex)|| i-3 == Math.floor($cutIndex))}{randomChar()}{/if}
 {/each}
 
 <style>
