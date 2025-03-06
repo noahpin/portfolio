@@ -6,7 +6,9 @@
 </script>
 
 <footer class=" footer-center">
-	<NavfooterSharedContent nav={false} {author} />
+	<div class="particle">
+		&copy; Noah Pinales {`${new Date().getFullYear()}`}
+	</div>
 </footer>
 
 <style>
@@ -19,8 +21,8 @@
 		width: 100%;
 		margin: 0;
 		padding-top: 40px;
+		padding-bottom: 40px;
 		display: flex;
-		border-top: 2px dashed var(--accent);
 	}
 	.footer-top {
 		display: flex;

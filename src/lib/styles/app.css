@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Libre+Barcode+128&display=swap');
 :root {
-  --background: #222227;
-  --accent: #ab6aff;
-  --white: #d4c8e7;
+  --background: #000;
+  --accent: #aeff00;
+  --white: #c8c8c8;
   --black: #e07000;
   --gray: #121213;
   --middleGray: #3f3f44;
@@ -20,6 +21,7 @@
 
 body {
   background: var(--background);
+  cursor:crosshair !important;
 }
 
 h1,
@@ -34,6 +36,8 @@ h5,
 h5 * {
   transform-origin: 0 0;
   font-weight: 500 !important;
+  font-family: "Instrument Serif";
+  color: var(--accent)
 }
 
 h1 {
@@ -108,7 +112,7 @@ a:hover, a:focus {
   text-decoration: underline wavy;
   text-decoration-color: var(--accent);
   outline: none;
-  opacity: 0.9;
+  color: var(--accent)
 }
 .home-title {
   font-size: 65px;
@@ -209,16 +213,26 @@ main {
   justify-content: baseline;
 }
 
-@media (max-width: 950px) {
+/* @media (max-width: 950px) { */
   main {
-    padding: 6vw;
     flex-direction: column;
     align-items: flex-start;
     justify-content: baseline;
   }
+/* } */
+
+@media (max-width: 950px) {
+main {
+  padding: 6vw;
+}
 }
 
 p {
   font-weight: lighter !important;
   margin: 0;
+}
+
+canvas {
+  width: 100%;
+  aspect-ratio: 16/9;
 }

@@ -29,6 +29,8 @@ const PROJECT_FRAGMENT = gql`
 		disciplines
 		image {
 			url
+			width
+			height
 		}
 		projectLinks {
 			... on Link {

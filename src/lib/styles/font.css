@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Akira';
+    src: url('fonts/Akira.woff2') format('woff2'),
+        url('fonts/Akira.woff') format('woff'),
+        url('fonts/Akira.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 /* happy-times-NG Bold */
 @font-face {
     font-family: 'Happy Times';

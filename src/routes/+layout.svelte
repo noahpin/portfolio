@@ -20,9 +20,9 @@
 	});
 	let w, h, sy;
 	let svgh;
-	let breakpoint = false;
+	let breakpoint = true;
 	$: svgh = h + sy;
-	$: breakpoint = w <= 950;
+	// $: breakpoint = w <= 950;
 </script>
 
 <svelte:window bind:innerWidth={w}  bind:innerHeight={h} bind:scrollY={sy}/>
@@ -30,7 +30,7 @@
 <main>
 	<Navbar {authors} width={w} {breakpoint} {home} />
 	<div>
-		<slot />
+		<slot {sy} />
 	</div>
 	{#if breakpoint}
 		<Footer {authors} width={w}{breakpoint}></Footer>
