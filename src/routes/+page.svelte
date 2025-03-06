@@ -35,7 +35,7 @@
 <svelte:head>
 	<title>Noah Pinales - Designer and Developer</title>
 </svelte:head>
-<ThreeThing></ThreeThing>
+<!-- <ThreeThing></ThreeThing> -->
 <div
 	id="projectList"
 	style:columns={columns}

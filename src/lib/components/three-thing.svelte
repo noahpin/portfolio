@@ -105,7 +105,7 @@
             if (brightness > 16.0/17.0) return false;
             if (brightness < 01.0/17.0) return true;
             
-    vec2 pixel = floor(mod((pos.xy+0.5) * .75 * pixelRatio, 4.0));
+    vec2 pixel = floor(mod((pos.xy+0.5) * 1., 4.0));
             int x = int(pixel.x);
             int y = int(pixel.y);
             bool result = false;
