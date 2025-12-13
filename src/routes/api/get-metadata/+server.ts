@@ -13,13 +13,22 @@ export async function POST({ request }) {
       keepAlive: true,
       maxSockets: 50,
     });
-
-    const metadata = await urlMetadata(u, {
-      agent: agent,
-      requestHeaders: {
-        "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    //get html content from supabase proxy
+    const res = await fetch('https://etrdcppajdvvwigypkgm.supabase.co/functions/v1/fetch-html', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        url: u,
+      }),
+    });
+
+    if (!res.ok) {
+      return json({ error: res.statusText });
+    }
+    const metadata = await urlMetadata(null, {
+      parseResponseObject: res
     });
     return json(metadata);
   } catch (err) {
